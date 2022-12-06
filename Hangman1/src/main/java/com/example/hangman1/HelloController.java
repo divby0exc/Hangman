@@ -6,12 +6,16 @@ import javafx.scene.layout.BackgroundImage;
 
 public class HelloController {
     @FXML
-    private Label welcomeText;
+    private Label chars;
 
+    @FXML
+    public Label alphabet;
     @FXML
     public BackgroundImage background;
     @FXML
     protected void onHelloButtonClick() {
-
+        background.getImage();
+        chars.getText();
+        alphabet.getText();
     }
 }

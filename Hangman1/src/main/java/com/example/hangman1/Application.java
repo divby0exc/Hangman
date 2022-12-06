@@ -49,7 +49,7 @@ public class Application extends javafx.application.Application {
             Scene scene = new Scene(vbox, 860, 520);
 
             // create a input stream
-            FileInputStream input = new FileInputStream("src/main/resources/com/example/testjfx/Prison-jail.png");
+            FileInputStream input = new FileInputStream("/home/paraply/IdeaProjects/Hangman/Hangman1/src/main/resources/Prison-jail.png");
 
             // create a image
             Image image = new Image(input);

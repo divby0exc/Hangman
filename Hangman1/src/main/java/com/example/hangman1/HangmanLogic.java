@@ -1,5 +1,8 @@
 package com.example.hangman1;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.*;
 
 public class HangmanLogic {
@@ -9,10 +12,7 @@ public class HangmanLogic {
         final char dash = '-';
 
         System.out.println("Welcome to game!");
-        List<String> secretWordList = new ArrayList<>(Arrays.asList("sun", "goal", "weather", "health", "happiness", "hi"));
-        Random random = new Random();
-        int index = random.nextInt(secretWordList.size() - 1);
-        String secretWord = secretWordList.get(index);
+        String secretWord = randomWord();
         char[] secretWordArray = new char[secretWord.length()];
         for (int i = 0; i < secretWord.length(); i++) {
             secretWordArray[i] = dash;
@@ -60,10 +60,6 @@ public class HangmanLogic {
                 wrongGuesses.add(input);
             }
 
-            // show incorrect guessed letters so far
-            //System.out.println("Wrong guesses so far: " + String.join(',', wrongGuesses.ToArray()));
-
-            // Solution #2
             // process the guesses and keep the results as a word.
             for (String guess : correctGuesses) {
                 char guessedChar = guess.charAt(0);
@@ -101,6 +97,19 @@ public class HangmanLogic {
         for (char ch : secretWordArray) {
             System.out.print(ch + " ");
         }
+    }
+
+    private static String randomWord() {
+        List<String> lines;
+        try {
+            lines = Files.readAllLines(Path.of("Hangman1/src/main/resources/word_list.txt"));
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        Random random = new Random();
+        return lines.get(random.nextInt(lines.size())).toUpperCase();
     }
 
 }

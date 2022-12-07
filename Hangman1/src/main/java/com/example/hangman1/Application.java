@@ -15,9 +15,7 @@ import java.io.IOException;
 
 public class Application extends javafx.application.Application {
     @Override
-    public void start(Stage stage)
-    {
-
+    public void start(Stage stage) {
         try {
 
             // set title for the stage
@@ -49,7 +47,7 @@ public class Application extends javafx.application.Application {
             Scene scene = new Scene(vbox, 860, 520);
 
             // create a input stream
-            FileInputStream input = new FileInputStream("/home/paraply/IdeaProjects/Hangman/Hangman1/src/main/resources/Prison-jail.png");
+            FileInputStream input = new FileInputStream("Prison-jail.png");
 
             // create a image
             Image image = new Image(input);
@@ -74,7 +72,6 @@ public class Application extends javafx.application.Application {
         }
 
         catch (Exception e) {
-
             System.out.println(e.getMessage());
         }
     }

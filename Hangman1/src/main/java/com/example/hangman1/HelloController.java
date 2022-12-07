@@ -2,13 +2,20 @@ package com.example.hangman1;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BackgroundImage;
 
 public class HelloController {
     @FXML
-    private Label welcomeText;
-    // I pushed stuff
+    private Label chars;
+
+    @FXML
+    public Label alphabet;
+    @FXML
+    public BackgroundImage background;
     @FXML
     protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+        background.getImage();
+        chars.getText();
+        alphabet.getText();
     }
 }

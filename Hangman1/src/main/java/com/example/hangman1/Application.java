@@ -69,7 +69,7 @@ public class Application extends javafx.application.Application {
 
             // set the scene
             stage.setScene(scene);
-
+            stage.setMaximized(true);
             stage.show();
         }
 

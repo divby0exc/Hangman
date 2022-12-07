@@ -15,9 +15,7 @@ import java.io.IOException;
 
 public class Application extends javafx.application.Application {
     @Override
-    public void start(Stage stage)
-    {
-
+    public void start(Stage stage) {
         try {
 
             // set title for the stage
@@ -74,7 +72,6 @@ public class Application extends javafx.application.Application {
         }
 
         catch (Exception e) {
-
             System.out.println(e.getMessage());
         }
     }

@@ -33,6 +33,9 @@ public class Application extends javafx.application.Application {
             // create a button
             Button button = new Button("Guess!");
 
+            FileInputStream inputGalow = new FileInputStream("/home/paraply/IdeaProjects/Hangman/Hangman1/src/main/resources/gallow.jpeg");
+            Image galow = new Image(inputGalow);
+
             // add the label, text field and button
             VBox vbox = new VBox(chars, alphabet, textfield, button);
 
@@ -47,13 +50,13 @@ public class Application extends javafx.application.Application {
             Scene scene = new Scene(vbox, 860, 520);
 
             // create a input stream
-            FileInputStream input = new FileInputStream("Prison-jail.png");
+            FileInputStream inputBackground = new FileInputStream("/Prison-jail.png");
 
             // create a image
-            Image image = new Image(input);
+            Image backgroundImage = new Image(inputBackground);
 
             // create a background image
-            BackgroundImage backgroundimage = new BackgroundImage(image,
+            BackgroundImage backgroundimage = new BackgroundImage(backgroundImage,
                     BackgroundRepeat.NO_REPEAT,
                     BackgroundRepeat.NO_REPEAT,
                     BackgroundPosition.CENTER,

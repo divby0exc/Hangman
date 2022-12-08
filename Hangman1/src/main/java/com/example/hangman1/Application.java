@@ -11,15 +11,8 @@ public class Application extends javafx.application.Application {
     public void start(Stage stage) throws IOException {
         stage.setTitle("HANGMAN");
 
-        //Start menu
-        //Scene mainGame = sceneChoice.mainGame();
-
-        // Mode
+        // Start
         Scene gameMenu = sceneChoice.gameMenu(stage);
-
-        // How to play
-        Scene howToPlay = sceneChoice.howToPlay(stage);
-
 
             stage.setScene(gameMenu);
             stage.show();

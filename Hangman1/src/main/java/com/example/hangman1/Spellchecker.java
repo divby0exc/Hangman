@@ -7,56 +7,48 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Spellchecker {
+    public static boolean SpellCheck(String word, String gameLanguage) {
+                File swedishDictionary = new File("src/main/resources/swedish-dictionary.txt");
+                File englishDictionary = new File("src/main/resources/english-dictionary.txt");
 
-
-    public static boolean sweSpellCheck(String word) {
-        File file = new File("src/main/resources/swedish-dictionary.txt");
         boolean isFound = false;
 
-        try {
-            Scanner scanner = new Scanner(file);
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                if (line.contains(word)) {
-                    isFound = true;
-                    break;
+        if(gameLanguage.equals("swe")) {
+            try {
+                Scanner scanner = new Scanner(swedishDictionary);
+                while (scanner.hasNextLine()) {
+                    String line = scanner.nextLine();
+                    if (line.contains(word)) {
+                        isFound = true;
+                        break;
+                    }
                 }
+                scanner.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
             }
-            scanner.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        }
+
+        if(gameLanguage.equals("eng")) {
+            try {
+                Scanner scanner = new Scanner(englishDictionary);
+                while (scanner.hasNextLine()) {
+                    String line = scanner.nextLine();
+                    if (line.contains(word)) {
+                        isFound = true;
+                        break;
+                    }
+                }
+                scanner.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
         }
 
         if (isFound) {
-            System.out.println("String was found!");
+            System.out.println("Looks good");
         } else {
-            System.out.println("String not found!");
-        }
-        return isFound;
-    }
-
-    public static boolean engSpellCheck(String word) {
-        File file = new File("src/main/resources/english-dictionary.txt");
-        boolean isFound = false;
-
-        try {
-            Scanner scanner = new Scanner(file);
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                if (line.contains(word)) {
-                    isFound = true;
-                    break;
-                }
-            }
-            scanner.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        if (isFound) {
-            System.out.println("String was found!");
-        } else {
-            System.out.println("String not found!");
+            System.out.println("Not spelled correctly");
         }
         return isFound;
     }

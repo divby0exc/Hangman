@@ -8,8 +8,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-import static com.example.hangman1.Spellchecker.engSpellCheck;
-import static com.example.hangman1.Spellchecker.sweSpellCheck;
+import static com.example.hangman1.Spellchecker.*;
 
 public class testApplication extends javafx.application.Application{
 
@@ -70,11 +69,9 @@ public class testApplication extends javafx.application.Application{
 
         String gameLanguage = "eng";
 
-        if (gameLanguage.equals("swe")){
-            sweSpellCheck(word);
-        } else if (gameLanguage.equals("eng")){
-            engSpellCheck(word);
-        }
+
+            SpellCheck(word, gameLanguage);
+
 
 
 

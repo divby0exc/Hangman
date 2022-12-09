@@ -8,7 +8,10 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
+import javafx.scene.shape.Line;
 import javafx.stage.Stage;
+
+import java.nio.file.Path;
 
 public class SceneChoice {
     private Alphabet al = new Alphabet();
@@ -19,6 +22,11 @@ public class SceneChoice {
     private String howToPlaySingleplayer = "Du får ett ord av datorn som du ska gissa. \nDu kan trycka på bokstäverna på skärmen eller på tangentbordet. ";
     private String howToPlayEnd = "\nDu har 10 försök på dig. Du ser när strecken ritas på skärmen \nmen även försöken ovanför bokstäverna så du slipper komma ihåg allt.";
     private String howToPlayInteractive = "I detta läge kan du bestämma själv hur många streck som ska ritas. \nDet betyder att ni bestämmer själva om det ska gå fort eller om ni vill rita mer streck så spelet blir längre. \nNär gubben är hängd så är spelet över. ";
+    private boolean hard = false; // Unlimited word length and randomized words in both swedish and english
+    private boolean intermediate = false; // Randomized words in swedish
+    private boolean easy = true; // Limit word length and use simple words
+    private boolean gameStarted = false;
+    private String guessTheWord = "";
 
 
     public javafx.scene.Scene mainGame() {
@@ -34,7 +42,7 @@ public class SceneChoice {
         pane.addRow(0, rowOne);
         pane.addRow(1, rowTwo);
         pane.addRow(2, rowThree);
-        Image img = new Image("C:\\Users\\DefconK1ll4\\Desktop\\Hangman\\Hangman1\\src\\main\\java\\com\\example\\hangman1\\background-prison-cell.jpg");
+        Image img = new Image("background-prison-cell.jpg");
         BackgroundImage bgi = new BackgroundImage(img, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         Background bg = new Background(bgi);
         pane.setBackground(bg);
@@ -76,7 +84,7 @@ public class SceneChoice {
         canvas1.getGraphicsContext2D();
         VBox vBox = new VBox(canvas1);
         Button singleplayer = new Button("En person");
-        singleplayer.setOnAction(e -> stage.setScene(howToPlay(stage, "en")));
+        singleplayer.setOnAction(e -> easy = true);
         Button multiplayer = new Button("Flera spelare");
         multiplayer.setOnAction(e -> stage.setScene(howToPlay(stage, "multi")));
         Button interactive = new Button("Rita själv");
@@ -143,7 +151,5 @@ public class SceneChoice {
         stage.setScene(mainGame());
         stage.setMaximized(true);
     }
-
-    //Skapa 3 olika scener för help selection
     //Skapa 3 olika modes såklart
 }

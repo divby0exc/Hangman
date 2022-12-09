@@ -1,21 +1,15 @@
 package com.example.hangman1;
 
 
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-import java.io.FileInputStream;
-import java.io.IOException;
+import static com.example.hangman1.Spellchecker.engSpellCheck;
+import static com.example.hangman1.Spellchecker.sweSpellCheck;
 
 public class testApplication extends javafx.application.Application{
 
@@ -35,6 +29,9 @@ public class testApplication extends javafx.application.Application{
         ImageView imageView = new ImageView();
         imageView.setFitHeight(300);
         imageView.setFitWidth(300);
+
+
+
 
         // What image to display depending on how many wrongGuesses
         int wrongGuesses = 8;
@@ -68,6 +65,18 @@ public class testApplication extends javafx.application.Application{
                 break;
 
         }
+
+        String word = "faldig";
+
+        String gameLanguage = "eng";
+
+        if (gameLanguage.equals("swe")){
+            sweSpellCheck(word);
+        } else if (gameLanguage.equals("eng")){
+            engSpellCheck(word);
+        }
+
+
 
 
         Group root = new Group();

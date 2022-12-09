@@ -1,17 +1,23 @@
 package com.example.hangman1;
 
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 
 import java.nio.file.Path;
+
+import static java.lang.System.*;
 
 public class SceneChoice {
     private Alphabet al = new Alphabet();
@@ -27,6 +33,9 @@ public class SceneChoice {
     private boolean easy = true; // Limit word length and use simple words
     private boolean gameStarted = false;
     private String guessTheWord = "";
+    String secretWord;
+    String secretWordInDash = " ".repeat(10);
+
 
 
     public javafx.scene.Scene mainGame() {
@@ -47,11 +56,43 @@ public class SceneChoice {
         Background bg = new Background(bgi);
         pane.setBackground(bg);
 
+        //creating enter own word
+        Label secWoDash = new Label(secretWordInDash);
+        secWoDash.setBorder(new Border(new BorderStroke(Color.valueOf("#9E9E9E"),
+                BorderStrokeStyle.SOLID,
+                CornerRadii.EMPTY,
+                BorderWidths.DEFAULT)));
+
+        PasswordField ownWord = new PasswordField();
+
+        Label word = new Label("Enter your word:");
+        Button button = new Button("OK");
+        button.setOnAction(action -> {
+            secretWord=(ownWord.getText());
+            System.out.println(secretWord);
+            secretWordInDash = createDashedWord(secretWord);
+            secWoDash.setText(secretWordInDash);
+        });
+
+
+
+
+
+
+        HBox hbox = new HBox(word,ownWord,button,secWoDash);
+        hbox.setSpacing(10);
+        hbox.setAlignment(Pos.BOTTOM_CENTER);
+        pane.add(hbox,30,9);
+
+
+
+
+
         javafx.scene.Scene mainGameScene = new javafx.scene.Scene(pane);
 
         //Checking pixels to decide positions on the lines
         mainGameScene.setOnMouseClicked((event) -> {
-            System.out.println("X " + event.getX() + " Y " + event.getY());
+            out.println("X " + event.getX() + " Y " + event.getY());
         });
         // Keyboard listener
         mainGameScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -147,6 +188,14 @@ public class SceneChoice {
         }
         return helpPlay;
     }
+    public String createDashedWord(String word) {
+        final String dash = "- ";
+        int count = word.length();
+        return dash.repeat(count);
+    }
+
+
+
     public void helpFuncToPlayListener(Stage stage) {
         stage.setScene(mainGame());
         stage.setMaximized(true);

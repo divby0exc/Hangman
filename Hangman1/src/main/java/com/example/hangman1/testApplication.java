@@ -14,6 +14,10 @@ public class testApplication extends javafx.application.Application{
 
     public void start(Stage stage) throws Exception {
 
+        //Sigges app for testing ... not to be used.
+
+
+
         //Adding every state of hangman
         Image firstMiss = new Image("1.png");
         Image secondMiss = new Image("2.png");
@@ -70,7 +74,7 @@ public class testApplication extends javafx.application.Application{
         String gameLanguage = "eng";
 
 
-            SpellCheck(word, gameLanguage);
+            SpellCheck(word);
 
 
 

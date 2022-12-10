@@ -64,7 +64,6 @@ public class SceneChoice {
                 BorderWidths.DEFAULT)));
 
         PasswordField ownWord = new PasswordField();
-
         Label word = new Label("Enter your word:");
         Button button = new Button("OK");
         button.setOnAction(action -> {
@@ -73,16 +72,13 @@ public class SceneChoice {
             secretWordInDash = createDashedWord(secretWord);
             secWoDash.setText(secretWordInDash);
         });
-
-
-
-
-
-
         HBox hbox = new HBox(word,ownWord,button,secWoDash);
         hbox.setSpacing(10);
         hbox.setAlignment(Pos.BOTTOM_CENTER);
         pane.add(hbox,30,9);
+
+
+
 
 
 

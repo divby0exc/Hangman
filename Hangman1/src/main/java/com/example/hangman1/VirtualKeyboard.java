@@ -22,7 +22,7 @@ import java.util.List;
 
 public class VirtualKeyboard extends Application {
 
-    String secretWordInDash;
+    String secretWordInDash=("-----");
     String secretWord;
     String alph;
 
@@ -34,9 +34,9 @@ public class VirtualKeyboard extends Application {
         HBox row=creatRow(letters);
         row.setPadding(new Insets(10, 10,10,10));
         HBox row1=creatRow(letters1);
-        row1.setPadding(new Insets(40, 40,10,10));
+        row1.setPadding(new Insets(-20, 10,10,10));
         HBox row2=creatRow(letters2);
-        row2.setPadding(new Insets(70, 70,10,10));
+        row2.setPadding(new Insets(-20, 10,10,10));
 
 
         Group root = new Group();
@@ -64,10 +64,13 @@ public class VirtualKeyboard extends Application {
             secretWordInDash = createDashedWord(secretWord);
             secWoDash.setText(secretWordInDash);
         });
-        HBox hbox = new HBox(word,ownWord,button,secWoDash);
-        hbox.setPadding(new Insets(100, 100,10,10));
-        root.getChildren().add(hbox);
-        hbox.setSpacing(10);
+        HBox hBox1=new HBox(word,ownWord,button,secWoDash);
+        hBox1.setPadding(new Insets(20, 20,10,10));
+
+        VBox vBox= new VBox(row,row1,row2,hBox1);
+        vBox.setPadding(new Insets(30, 30,10,10));
+        root.getChildren().add(vBox);
+        vBox.setSpacing(10);
 
 
         Scene scene = new Scene(root, 600, 200, Color.BEIGE);

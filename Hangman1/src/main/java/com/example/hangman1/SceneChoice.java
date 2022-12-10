@@ -1,14 +1,18 @@
 package com.example.hangman1;
 
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Line;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.nio.file.Path;
@@ -26,7 +30,7 @@ public class SceneChoice {
     private boolean intermediate = false; // Randomized words in swedish
     private boolean easy = true; // Limit word length and use simple words
     private boolean gameStarted = false;
-    private String guessTheWord = "";
+    private String guessTheWord = null;
 
 
     public javafx.scene.Scene mainGame() {
@@ -43,9 +47,23 @@ public class SceneChoice {
         pane.addRow(1, rowTwo);
         pane.addRow(2, rowThree);
         Image img = new Image("background-prison-cell.jpg");
-        BackgroundImage bgi = new BackgroundImage(img, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        BackgroundImage bgi = new BackgroundImage(img, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         Background bg = new Background(bgi);
         pane.setBackground(bg);
+
+           VBox vBox = new VBox();
+            Label label = new Label("Enter the word: ");
+            TextField tf = new TextField();
+            Button submitWord = new Button("Submit word");
+            submitWord.setOnAction(e -> {
+                guessTheWord = tf.getText();
+                System.out.println(guessTheWord);
+                vBox.setVisible(false);
+            });
+            vBox.getChildren().addAll(label, tf, submitWord);
+
+
+        pane.getChildren().add(vBox);
 
         javafx.scene.Scene mainGameScene = new javafx.scene.Scene(pane);
 
@@ -68,7 +86,10 @@ public class SceneChoice {
         canvas.getGraphicsContext2D();
         VBox vBox = new VBox(canvas);
         Button playGame = new Button("SPELA!");
-        playGame.setOnAction(e -> helpFuncToPlayListener(stage));
+        playGame.setOnAction(e -> {
+            stage.setScene(mainGame());
+            stage.setMaximized(true);
+        });
         Button mode = new Button("Svårighetsgrad");
         mode.setOnAction(e -> stage.setScene(mode(stage)));
         Button help = new Button("Hur spelar jag?");
@@ -83,19 +104,31 @@ public class SceneChoice {
         Canvas canvas1 = new Canvas(150,150);
         canvas1.getGraphicsContext2D();
         VBox vBox = new VBox(canvas1);
-        Button singleplayer = new Button("En person");
-        singleplayer.setOnAction(e -> easy = true);
-        Button multiplayer = new Button("Flera spelare");
-        multiplayer.setOnAction(e -> stage.setScene(howToPlay(stage, "multi")));
-        Button interactive = new Button("Rita själv");
-        interactive.setOnAction(e -> stage.setScene(howToPlay(stage, "inter")));
+        Button easy = new Button("Lätt");
+        easy.setOnAction(e -> checkButtonVal("l"));
+        Button inter = new Button("Mellan");
+        inter.setOnAction(e -> checkButtonVal("m"));
+        Button hard = new Button("Svårt");
+        hard.setOnAction(e -> checkButtonVal("h"));
         Button previous = new Button("Gå tillbaka");
         previous.setOnAction(e -> stage.setScene(gameMenu(stage)));
-        vBox.getChildren().addAll(singleplayer,multiplayer,interactive,previous);
+        vBox.getChildren().addAll(easy ,inter,hard,previous);
         javafx.scene.Scene howToPlayScene = new javafx.scene.Scene(vBox);
 
         return howToPlayScene;
 
+    }
+    public void checkButtonVal(String a) {
+        if(a.equals("l")) {
+            easy = true;
+            System.out.println(easy);
+        }  else if(a.equals("m")) {
+            intermediate = true;
+            System.out.println(intermediate);
+        } else if(a.equals("h")) {
+            hard = true;
+            System.out.println(hard);
+        }
     }
     public javafx.scene.Scene howToPlay(Stage stage) {
         Canvas canvas1 = new Canvas(150,150);
@@ -147,9 +180,4 @@ public class SceneChoice {
         }
         return helpPlay;
     }
-    public void helpFuncToPlayListener(Stage stage) {
-        stage.setScene(mainGame());
-        stage.setMaximized(true);
-    }
-    //Skapa 3 olika modes såklart
 }

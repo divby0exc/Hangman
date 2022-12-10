@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -25,6 +26,18 @@ public class VirtualKeyboard extends Application {
     String secretWordInDash=("-----");
     String secretWord;
     String alph;
+    String input;
+    Label inputCh;
+    Label messageOfInput;
+    TextField enterACharacter;
+    Button submitCharacter;
+    boolean userWon = false;
+    List<String> correctGuesses = new ArrayList<>();
+    List<String> wrongGuesses = new ArrayList<>();
+    int guessAttempt;
+    int maxChances = 8;
+
+
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -46,6 +59,10 @@ public class VirtualKeyboard extends Application {
         root.getChildren().add(row2);
 
 
+
+
+
+
         Label secWoDash = new Label(secretWordInDash);
         secWoDash.setFont(new Font("Arial", 25));
         /*secWoDash.setBorder(new Border(new BorderStroke(Color.valueOf("#9E9E9E"),
@@ -64,10 +81,24 @@ public class VirtualKeyboard extends Application {
             secretWordInDash = createDashedWord(secretWord);
             secWoDash.setText(secretWordInDash);
         });
+
+        inputCh= new Label("Guess a character");
+        messageOfInput= new Label();
+        enterACharacter= new TextField();
+        submitCharacter= new Button("Submit");
+        submitCharacter.setOnAction(actionEvent ->{
+            input=enterACharacter.getText();
+            submit(actionEvent);
+        });
+
+
         HBox hBox1=new HBox(word,ownWord,button,secWoDash);
         hBox1.setPadding(new Insets(20, 20,10,10));
 
-        VBox vBox= new VBox(row,row1,row2,hBox1);
+        HBox inputplayer= new HBox(inputCh,enterACharacter,submitCharacter,messageOfInput);
+        hBox1.setPadding(new Insets(30, 30,10,10));
+
+        VBox vBox= new VBox(row,row1,row2,hBox1,inputplayer);
         vBox.setPadding(new Insets(30, 30,10,10));
         root.getChildren().add(vBox);
         vBox.setSpacing(10);
@@ -100,6 +131,60 @@ public class VirtualKeyboard extends Application {
         return dash.repeat(count);
     }
 
+    public void submit (ActionEvent e) {
+        if (input == null || "".equals(input.trim())) {
+            messageOfInput.setText("Invalid input. Please try again.");
+            return;
+        }
+
+        if (correctGuesses.contains(input) || wrongGuesses.contains(input)) {
+            messageOfInput.setText("You guessed this letter before. Try another one!");
+            guessAttempt--; // don't count this duplicate letter
+            return; // don't do anything and just loop again
+        }
+
+        // if user guessed the whole word in one go, set the flag to true and skip the loop
+        if (secretWord.equals(input)) {
+            userWon = true;
+            messageOfInput.setText("You won.");
+            return;
+        }
+
+            if (secretWord.contains(input)) {
+                // count the guess as correct only if it's one character
+                if (input.length() == 1) {
+                    correctGuesses.add(input);
+                    messageOfInput.setText("The character is correct. please enter a new character:");
+                } else {
+                    // if it's multiple characters, then it's not a correct guess even if it's part of the secret word
+                    wrongGuesses.add(input);
+                }
+            } else {
+                wrongGuesses.add(input);
+            }
+        }
+
+
+
+    /*public void submit (ActionEvent e) {
+        if (input == null || "".equals(input.trim())) {
+            messageOfInput.setText("Invalid input. Please try again.");
+            return;
+        }
+
+        if (correctGuesses.contains(input) || wrongGuesses.contains(input)) {
+            messageOfInput.setText("You guessed this letter before. Try another one!");
+            guessAttempt--; // don't count this duplicate letter
+            return; // don't do anything and just loop again
+        }
+
+        // if user guessed the whole word in one go, set the flag to true and skip the loop
+        if (secretWord.equals(input)) {
+            userWon = true;
+            messageOfInput.setText("You won.");
+            return;
+        }
+    }*/
 
     public static void main(String[] args) {
         launch();

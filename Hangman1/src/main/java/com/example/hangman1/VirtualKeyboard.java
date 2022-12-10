@@ -58,15 +58,13 @@ public class VirtualKeyboard extends Application {
         word.setFont(new Font("Arial", 12));
         word.setTextAlignment(TextAlignment.CENTER);
         Button button = new Button("OK");
-        button.setOnAction(action -> {
-            secretWord=(ownWord.getText());
-            if(secretWord.equalsIgnoreCase("test")) { // this is not used?
-                System.out.print(secretWord);
+        button.setOnAction(action -> {  secretWord=(ownWord.getText());
+            if(Spellchecker.SpellCheck(secretWord)) {
+                System.out.println(secretWord);
                 secretWordInDash = createDashedWord(secretWord);
                 secWoDash.setText(secretWordInDash);
             } else {
-                //word did not exist in dictionary
-                System.out.println(secretWord + " does not exist in our dictionary");
+                System.out.println(secretWord + " does not exist in our dictionary. Check your spelling");
             }
         });
         HBox hBox1=new HBox(word,ownWord,button,secWoDash);

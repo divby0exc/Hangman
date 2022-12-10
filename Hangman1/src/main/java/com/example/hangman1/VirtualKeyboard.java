@@ -60,9 +60,14 @@ public class VirtualKeyboard extends Application {
         Button button = new Button("OK");
         button.setOnAction(action -> {
             secretWord=(ownWord.getText());
-            System.out.print(secretWord);
-            secretWordInDash = createDashedWord(secretWord);
-            secWoDash.setText(secretWordInDash);
+            if(secretWord.equalsIgnoreCase("test")) { // this is not used?
+                System.out.print(secretWord);
+                secretWordInDash = createDashedWord(secretWord);
+                secWoDash.setText(secretWordInDash);
+            } else {
+                //word did not exist in dictionary
+                System.out.println(secretWord + " does not exist in our dictionary");
+            }
         });
         HBox hBox1=new HBox(word,ownWord,button,secWoDash);
         hBox1.setPadding(new Insets(20, 20,10,10));

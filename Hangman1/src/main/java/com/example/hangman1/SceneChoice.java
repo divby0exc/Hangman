@@ -14,6 +14,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
+import static com.example.hangman1.Spellchecker.*;
 
 import java.nio.file.Path;
 
@@ -33,6 +34,14 @@ public class SceneChoice {
     private boolean easy = true; // Limit word length and use simple words
     private boolean gameStarted = false;
     private String guessTheWord = "";
+
+
+    //for spellchecker
+    static boolean swedish = true;   //both should be false from start of application and one (or both?) should later be switched depending on what the player choice is.
+    static boolean english = false;
+
+
+
     String secretWord;
     String secretWordInDash = " ".repeat(10);
 
@@ -68,9 +77,13 @@ public class SceneChoice {
         Button button = new Button("OK");
         button.setOnAction(action -> {
             secretWord=(ownWord.getText());
+            if(Spellchecker.SpellCheck(secretWord)) {
             System.out.println(secretWord);
             secretWordInDash = createDashedWord(secretWord);
             secWoDash.setText(secretWordInDash);
+            } else {
+                System.out.println(secretWord + " does not exist in our dictionary. Check your spelling");
+            }
         });
         HBox hbox = new HBox(word,ownWord,button,secWoDash);
         hbox.setSpacing(10);

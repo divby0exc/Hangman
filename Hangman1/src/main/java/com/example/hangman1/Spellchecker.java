@@ -6,14 +6,20 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+import static com.example.hangman1.SceneChoice.english;
+import static com.example.hangman1.SceneChoice.swedish;
+
 public class Spellchecker {
-    public static boolean SpellCheck(String word, String gameLanguage) {
-                File swedishDictionary = new File("src/main/resources/swedish-dictionary.txt");
-                File englishDictionary = new File("src/main/resources/english-dictionary.txt");
+    public static boolean SpellCheck(String word) {
+
+        File swedishDictionary = new File("src/main/resources/swedish-dictionary.txt");
+        File englishDictionary = new File("src/main/resources/english-dictionary.txt");
+
+
 
         boolean isFound = false;
 
-        if(gameLanguage.equals("swe")) {
+        if(swedish) {
             try {
                 Scanner scanner = new Scanner(swedishDictionary);
                 while (scanner.hasNextLine()) {
@@ -29,7 +35,7 @@ public class Spellchecker {
             }
         }
 
-        if(gameLanguage.equals("eng")) {
+        if(english) {
             try {
                 Scanner scanner = new Scanner(englishDictionary);
                 while (scanner.hasNextLine()) {
@@ -43,6 +49,10 @@ public class Spellchecker {
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
+        }
+
+        if(english && swedish){
+            //if wanting to play with both swedish and english
         }
 
         if (isFound) {

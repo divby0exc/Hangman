@@ -1,16 +1,15 @@
 package com.example.hangman1;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -25,7 +24,7 @@ import java.util.List;
 public class VirtualKeyboard extends Application {
 
     String secretWordInDash;
-    int guessAttempt = 1;
+    int wrongAttempt = 0;
     char[] secretWordArray;
 
     final String dash = "-";
@@ -43,6 +42,15 @@ public class VirtualKeyboard extends Application {
     List<String> wrongGuesses = new ArrayList<>();
 
     int maxChances = 8;
+    Image firstMiss = new Image("1.png");
+    Image secondMiss = new Image("2.png");
+    Image thirdMiss  = new Image("3.png");
+    Image fourthMiss = new Image("4.png");
+    Image fifthMiss = new Image("5.png");
+    Image sixthMiss = new Image("6.png");
+    Image seventhMiss = new Image("7.png");
+    Image eighthMiss = new Image("8.png");
+    ImageView imageView = new ImageView();
 
 
     @Override
@@ -81,7 +89,6 @@ public class VirtualKeyboard extends Application {
             secretWord = (ownWord.getText());
             System.out.print(secretWord);
             secretWordArray = dash.repeat(secretWord.length()).toCharArray();
-            //secretWordInDash = createDashedWord(secretWord);
             secWoDash.setText(new String(secretWordArray));
 
         });
@@ -93,6 +100,8 @@ public class VirtualKeyboard extends Application {
         submitCharacter.setOnAction(actionEvent -> {
             input = enterACharacter.getText();
             submit();
+            enterACharacter.setText("");
+
         });
 
 
@@ -100,9 +109,17 @@ public class VirtualKeyboard extends Application {
         hBox1.setPadding(new Insets(20, 20, 10, 10));
 
         HBox inputplayer = new HBox(inputCh, enterACharacter, submitCharacter, messageOfInput);
-        hBox1.setPadding(new Insets(30, 30, 10, 10));
+        //hBox1.setPadding(new Insets(30, 30, 10, 10));
 
-        VBox vBox = new VBox(row, row1, row2, hBox1, inputplayer);
+        imageView.setFitHeight(300);
+        imageView.setFitWidth(300);
+        HBox hangmanDrawing = new HBox(imageView);
+        //hBox1.setPadding(new Insets(40, 40, 10, 10));
+
+
+
+
+        VBox vBox = new VBox(row, row1, row2, hBox1, inputplayer,hangmanDrawing);
         vBox.setPadding(new Insets(30, 30, 10, 10));
         root.getChildren().add(vBox);
         vBox.setSpacing(10);
@@ -152,7 +169,7 @@ public class VirtualKeyboard extends Application {
 
     public void submit() {
 
-        if (guessAttempt <= maxChances) {
+        if (wrongAttempt <= maxChances) {
 
             if (input == null || "".equals(input.trim())) {
                 messageOfInput.setText("Invalid input. Please try again.");
@@ -175,16 +192,20 @@ public class VirtualKeyboard extends Application {
                 // count the guess as correct only if it's one character
                 if (input.length() == 1) {
                     correctGuesses.add(input);
+                    messageOfInput.setText("\r\nYou guessed right. Guess next letter: ");
                 } else {
                     // if it's multiple characters, then it's not a correct guess even if it's part of the secret word
                     wrongGuesses.add(input);
+                    wrongAttempt++;
+                    messageOfInput.setText("\r\nYou guessed wrong. you have spent " + wrongAttempt + "/" + maxChances + " of your chances to guess wrong! Guess a new letter: ");
                 }
             } else {
                 wrongGuesses.add(input);
+                wrongAttempt++;
+                messageOfInput.setText("\r\nYou guessed wrong. you have spent " + wrongAttempt + "/" + maxChances + " of your chances to guess wrong, Guess a new letter: ");
             }
 
-            guessAttempt++;
-            messageOfInput.setText("\r\nChance " + guessAttempt + "/" + maxChances + ", Guess a letter: ");
+
 
 
             // process the guesses and keep the results as a word.
@@ -208,19 +229,51 @@ public class VirtualKeyboard extends Application {
             if (!new String(secretWordArray).contains(dash)) {
                 userWon = true;
                 messageOfInput.setText("\r\nCongrats! You Won!");
-                guessAttempt=1;
+                wrongAttempt =0;
                 return;
             }
 
-            if (guessAttempt >= maxChances) {
+            if (wrongAttempt >= maxChances) {
                 messageOfInput.setText("\r\nSorry! You did not win. The correct word is: \r\n" + secretWord);
-                guessAttempt=1;
+                wrongAttempt =0;
                 return;
             }
         }
+        getImage();
     }
 
+    public void getImage(){
+        switch (wrongAttempt) {
+            case 0:
+                break;
+            case 1:
+                imageView.setImage(firstMiss);
+                break;
+            case 2:
+                imageView.setImage(secondMiss);
+                break;
+            case 3:
+                imageView.setImage(thirdMiss);
+                break;
+            case 4:
+                imageView.setImage(fourthMiss);
+                break;
+            case 5:
+                imageView.setImage(fifthMiss);
+                break;
+            case 6:
+                imageView.setImage(sixthMiss);
+                break;
+            case 7:
+                imageView.setImage(seventhMiss);
+                break;
+            case 8:
+                imageView.setImage(eighthMiss);
+                // hasLost = true;
+                break;
 
+        }
+    }
 
     public static void main(String[] args) {
         launch();

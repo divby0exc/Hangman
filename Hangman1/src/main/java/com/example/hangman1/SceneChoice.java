@@ -112,6 +112,7 @@ public class SceneChoice {
         });
 
         return mainGameScene;
+
     }
     public javafx.scene.Scene gameMenu(Stage stage) {
         Canvas canvas = new Canvas(150,150);

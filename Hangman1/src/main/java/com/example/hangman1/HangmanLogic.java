@@ -28,7 +28,7 @@ public class HangmanLogic {
         for (int guessAttempt = 1; guessAttempt <= maxChances; guessAttempt++) {
             System.out.println("\r\nChance " + guessAttempt + "/" + maxChances + ", Guess a letter: ");
             String input = scanner.next();
-            System.out.println("user input is: "+input);
+            System.out.println("user input is: " + input);
 
             if (input == null || "".equals(input.trim())) {
                 System.out.println("Invalid input. Please try again.");
@@ -76,8 +76,7 @@ public class HangmanLogic {
             printWordArray(secretWordArray);
 
             // if no dash is left in the word, it means all letters are revealed and user wins
-            if (!String.valueOf(secretWordArray).contains(String.valueOf(dash)))
-            {
+            if (!String.valueOf(secretWordArray).contains(String.valueOf(dash))) {
                 userWon = true;
                 break;
             }
@@ -92,7 +91,7 @@ public class HangmanLogic {
 
     }
 
-    private static void printWordArray(char[] secretWordArray){
+    private static void printWordArray(char[] secretWordArray) {
         System.out.println("Word: ");
         for (char ch : secretWordArray) {
             System.out.print(ch + " ");

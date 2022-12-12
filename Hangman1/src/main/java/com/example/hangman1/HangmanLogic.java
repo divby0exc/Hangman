@@ -5,8 +5,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 
-public class HangmanLogic {
-    public static void main(String[] args) {
+public class HangmanLogic extends Thread {
+    public void run() {
         Scanner scanner = new Scanner(System.in);
         boolean userWon = false;
         final char dash = '-';
@@ -111,5 +111,13 @@ public class HangmanLogic {
         return lines.get(random.nextInt(lines.size())).toUpperCase();
     }
 
+    public static void main(String[] args) {
+        Thread p1 = new HangmanLogic();
+        Thread p2 = new HangmanLogic();
+
+        p1.run();
+        p2.run();
+
+    }
 }
 

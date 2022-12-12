@@ -25,7 +25,6 @@ public class MainHangmanGame {
     char[] secretWordArray;
     PasswordField ownWord;
     final String dash = "-";
-    ;
     String secretWord="";
     String alph;
     String input;

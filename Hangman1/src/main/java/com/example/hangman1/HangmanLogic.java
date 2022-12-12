@@ -115,13 +115,10 @@ public class HangmanLogic extends Thread {
     public static void main(String[] args) {
         Thread p1 = new HangmanLogic();
         Thread p2 = new HangmanLogic();
-        Thread p3 = new HangmanLogic();
-        Thread p4 = new HangmanLogic();
 
         p1.run();
         p2.run();
-        p3.start();
-        p4.run();
+
     }
 }
 

@@ -38,10 +38,8 @@ public class SceneChoice {
     public javafx.scene.Scene mainGame(Stage stage) {
         MainHangmanGame sg = new MainHangmanGame();
         Scene scene=sg.startGame();
-
         return scene;
     }
-
 
     public javafx.scene.Scene gameMenu(Stage stage) {
         Canvas canvas = new Canvas(150, 150);

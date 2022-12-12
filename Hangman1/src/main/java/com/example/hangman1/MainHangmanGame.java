@@ -1,6 +1,5 @@
 package com.example.hangman1;
 
-import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -14,14 +13,12 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class VirtualKeyboard extends Application {
+public class MainHangmanGame {
 
     String secretWordInDash;
     int wrongAttempt = 0;
@@ -44,7 +41,7 @@ public class VirtualKeyboard extends Application {
     int maxChances = 8;
     Image firstMiss = new Image("1.png");
     Image secondMiss = new Image("2.png");
-    Image thirdMiss  = new Image("3.png");
+    Image thirdMiss = new Image("3.png");
     Image fourthMiss = new Image("4.png");
     Image fifthMiss = new Image("5.png");
     Image sixthMiss = new Image("6.png");
@@ -53,8 +50,9 @@ public class VirtualKeyboard extends Application {
     ImageView imageView = new ImageView();
 
 
-    @Override
-    public void start(Stage stage) throws IOException {
+    public Scene startGame() {
+
+        // Creating a virtual keyboard
         List<String> letters = new ArrayList<>(Arrays.asList("Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"));
         List<String> letters1 = new ArrayList<>(Arrays.asList("A", "S", "D", "F", "G", "H", "J", "K", "L"));
         List<String> letters2 = new ArrayList<>(Arrays.asList("Z", "X", "C", "V", "B", "N", "M"));
@@ -65,21 +63,7 @@ public class VirtualKeyboard extends Application {
         HBox row2 = creatRow(letters2);
         row2.setPadding(new Insets(-20, 10, 10, 10));
 
-
-        Group root = new Group();
-        root.getChildren().add(row);
-        root.getChildren().add(row1);
-        row2.setMinWidth(100);
-        root.getChildren().add(row2);
-
-
-        secWoDash = new Label(secretWordInDash);
-        secWoDash.setFont(new Font("Arial", 25));
-        /*secWoDash.setBorder(new Border(new BorderStroke(Color.valueOf("#9E9E9E"),
-                BorderStrokeStyle.SOLID,
-                CornerRadii.EMPTY,
-                BorderWidths.DEFAULT)));*/
-
+        //Creating box for type the secret word and show it in dash style
         PasswordField ownWord = new PasswordField();
         Label word = new Label("Enter your word:");
         word.setFont(new Font("Arial", 12));
@@ -92,7 +76,11 @@ public class VirtualKeyboard extends Application {
             secWoDash.setText(new String(secretWordArray));
 
         });
+        secWoDash = new Label(secretWordInDash);
+        secWoDash.setFont(new Font("Arial", 25));
 
+
+        // creating box for get input of player and show the result
         inputCh = new Label("Guess a character");
         messageOfInput = new Label();
         enterACharacter = new TextField();
@@ -105,32 +93,32 @@ public class VirtualKeyboard extends Application {
         });
 
 
+
+        Group root = new Group();
+        root.getChildren().add(row);
+        root.getChildren().add(row1);
+        row2.setMinWidth(100);
+        root.getChildren().add(row2);
+
+
         HBox hBox1 = new HBox(word, ownWord, button, secWoDash);
         hBox1.setPadding(new Insets(20, 20, 10, 10));
-
         HBox inputplayer = new HBox(inputCh, enterACharacter, submitCharacter, messageOfInput);
-        //hBox1.setPadding(new Insets(30, 30, 10, 10));
-
+        HBox hangmanDrawing = new HBox(imageView);
         imageView.setFitHeight(300);
         imageView.setFitWidth(300);
-        HBox hangmanDrawing = new HBox(imageView);
-        //hBox1.setPadding(new Insets(40, 40, 10, 10));
 
-
-
-
-        VBox vBox = new VBox(row, row1, row2, hBox1, inputplayer,hangmanDrawing);
+        VBox vBox = new VBox(row, row1, row2, hBox1, inputplayer, hangmanDrawing);
         vBox.setPadding(new Insets(30, 30, 10, 10));
         root.getChildren().add(vBox);
         vBox.setSpacing(10);
 
 
         Scene scene = new Scene(root, 600, 200, Color.BEIGE);
-        stage.setTitle("Keyboard");
-        stage.setScene(scene);
-        stage.show();
-
+        return scene;
     }
+
+
 
     public HBox creatRow(List<String> letters) {
 
@@ -156,13 +144,14 @@ public class VirtualKeyboard extends Application {
 
     /**
      * Accepts a word and returns it with one space between each character
+     *
      * @param word
      * @return
      */
-    private String spaced(String word){
+    private String spaced(String word) {
         String output = "";
         for (char ch : word.toCharArray()) {
-            output += String.format("%c ",ch);
+            output += String.format("%c ", ch);
         }
         return output;
     }
@@ -198,14 +187,13 @@ public class VirtualKeyboard extends Application {
                     wrongGuesses.add(input);
                     wrongAttempt++;
                     messageOfInput.setText("\r\nYou guessed wrong. you have spent " + wrongAttempt + "/" + maxChances + " of your chances to guess wrong! Guess a new letter: ");
+
                 }
             } else {
                 wrongGuesses.add(input);
                 wrongAttempt++;
                 messageOfInput.setText("\r\nYou guessed wrong. you have spent " + wrongAttempt + "/" + maxChances + " of your chances to guess wrong, Guess a new letter: ");
             }
-
-
 
 
             // process the guesses and keep the results as a word.
@@ -229,20 +217,21 @@ public class VirtualKeyboard extends Application {
             if (!new String(secretWordArray).contains(dash)) {
                 userWon = true;
                 messageOfInput.setText("\r\nCongrats! You Won!");
-                wrongAttempt =0;
+                wrongAttempt = 0;
                 return;
             }
 
             if (wrongAttempt >= maxChances) {
+                wrongAttempt++;
                 messageOfInput.setText("\r\nSorry! You did not win. The correct word is: \r\n" + secretWord);
-                wrongAttempt =0;
+                wrongAttempt = 0;
                 return;
             }
         }
         getImage();
     }
-
-    public void getImage(){
+    //get image of hangman drawing
+    public void getImage() {
         switch (wrongAttempt) {
             case 0:
                 break;
@@ -275,7 +264,4 @@ public class VirtualKeyboard extends Application {
         }
     }
 
-    public static void main(String[] args) {
-        launch();
-    }
 }

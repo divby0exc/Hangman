@@ -5,12 +5,77 @@
 <?import javafx.scene.layout.VBox?>
 
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.hangman1.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
 
-    <Label fx:id="_ _ _ _ _ _ _ _ "/>
-    <Button text="Hangman" onAction="#onHelloButtonClick"/>
-</VBox>
+<?import javafx.scene.text.Text?>
+<?import java.lang.String?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TextArea?>
+<?import com.example.hangman1.RestrictiveTextField?>
+<GridPane fx:controller="com.example.hangman1.Controller"
+            xmlns:fx="http://javafx.com/fxml"
+            style="-fx-border-color: red; -fx-border-width: 3; -fx-border-style: dashed; -fx-alignment: bottom-center">
+            <padding>
+                <Insets bottom="5"/>
+            </padding>
+            <Button fx:id="A" text="A" GridPane.rowIndex="0" GridPane.columnIndex="0" onAction="#getID"/>
+            <Button fx:id="B" text="B" GridPane.rowIndex="0" GridPane.columnIndex="1" onAction="#getID"/>
+            <Button fx:id="C" text="C" GridPane.rowIndex="0" GridPane.columnIndex="2" onAction="#getID"/>
+            <Button fx:id="D" text="D" GridPane.rowIndex="0" GridPane.columnIndex="3" onAction="#getID"/>
+            <Button fx:id="E" text="E" GridPane.rowIndex="0" GridPane.columnIndex="4" onAction="#getID"/>
+            <Button fx:id="F" text="F" GridPane.rowIndex="0" GridPane.columnIndex="5" onAction="#getID"/>
+            <Button fx:id="G" text="G" GridPane.rowIndex="0" GridPane.columnIndex="6" onAction="#getID"/>
+            <Button fx:id="H" text="H" GridPane.rowIndex="0" GridPane.columnIndex="7" onAction="#getID"/>
+            <Button fx:id="I" text="I" GridPane.rowIndex="0" GridPane.columnIndex="8" onAction="#getID"/>
+            <Button fx:id="J" text="J" GridPane.rowIndex="1" GridPane.columnIndex="0" onAction="#getID"/>
+            <Button fx:id="K" text="K" GridPane.rowIndex="1" GridPane.columnIndex="1" onAction="#getID"/>
+            <Button fx:id="L" text="L" GridPane.rowIndex="1" GridPane.columnIndex="2" onAction="#getID"/>
+            <Button fx:id="M" text="M" GridPane.rowIndex="1" GridPane.columnIndex="3" onAction="#getID"/>
+            <Button fx:id="N" text="N" GridPane.rowIndex="1" GridPane.columnIndex="4" onAction="#getID"/>
+            <Button fx:id="O" text="O" GridPane.rowIndex="1" GridPane.columnIndex="5" onAction="#getID"/>
+            <Button fx:id="P" text="P" GridPane.rowIndex="1" GridPane.columnIndex="6" onAction="#getID"/>
+            <Button fx:id="Q" text="Q" GridPane.rowIndex="1" GridPane.columnIndex="7" onAction="#getID"/>
+            <Button fx:id="R" text="R" GridPane.rowIndex="1" GridPane.columnIndex="8" onAction="#getID"/>
+            <Button fx:id="S" text="S" GridPane.rowIndex="2" GridPane.columnIndex="0" onAction="#getID"/>
+            <Button fx:id="T" text="T" GridPane.rowIndex="2" GridPane.columnIndex="1" onAction="#getID"/>
+            <Button fx:id="U" text="U" GridPane.rowIndex="2" GridPane.columnIndex="2" onAction="#getID"/>
+            <Button fx:id="V" text="V" GridPane.rowIndex="2" GridPane.columnIndex="3" onAction="#getID"/>
+            <Button fx:id="W" text="W" GridPane.rowIndex="2" GridPane.columnIndex="4" onAction="#getID"/>
+            <Button fx:id="X" text="X" GridPane.rowIndex="2" GridPane.columnIndex="5" onAction="#getID"/>
+            <Button fx:id="Y" text="Y" GridPane.rowIndex="2" GridPane.columnIndex="6" onAction="#getID"/>
+            <Button fx:id="Z" text="Z" GridPane.rowIndex="2" GridPane.columnIndex="7" onAction="#getID"/>
+
+</GridPane>
+<!--
+<FlowPane fx:controller="com.example.hangman1.Controller"
+          xmlns:fx="http://javafx.com/fxml" orientation="HORIZONTAL" alignment="BOTTOM_CENTER">
+    <Button text="A"/>
+    <Button text="B"/>
+    <Button text="C"/>
+    <Button text="D"/>
+    <Button text="E"/>
+    <Button text="F"/>
+    <Button text="G"/>
+    <Button text="H"/>
+    <Button text="I"/>
+    <Button text="J"/>
+    <Button text="K"/>
+    <Button text="L"/>
+    <Button text="M"/>
+    <Button text="N"/>
+    <Button text="O"/>
+    <Button text="P"/>
+    <Button text="Q"/>
+    <Button text="R"/>
+    <Button text="S"/>
+    <Button text="T"/>
+    <Button text="U"/>
+    <Button text="V"/>
+    <Button text="W"/>
+    <Button text="X"/>
+    <Button text="Y"/>
+    <Button text="Z"/>
+</FlowPane>-->

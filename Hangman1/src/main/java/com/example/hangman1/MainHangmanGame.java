@@ -12,6 +12,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
+import model.User;
 
 import java.io.DataInputStream;
 import java.util.ArrayList;
@@ -20,12 +21,13 @@ import java.util.List;
 
 public class MainHangmanGame {
 
+
     String secretWordInDash;
     int wrongAttempt = 0;
     char[] secretWordArray;
     PasswordField ownWord;
     final String dash = "-";
-    String secretWord="";
+    String secretWord = "";
     String alph;
     String input;
     Label inputCh;
@@ -56,11 +58,11 @@ public class MainHangmanGame {
         List<String> letters = new ArrayList<>(Arrays.asList("Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"));
         List<String> letters1 = new ArrayList<>(Arrays.asList("A", "S", "D", "F", "G", "H", "J", "K", "L"));
         List<String> letters2 = new ArrayList<>(Arrays.asList("Z", "X", "C", "V", "B", "N", "M"));
-        HBox row = creatRow(letters);
+        HBox row = createRow(letters);
         row.setPadding(new Insets(10, 10, 10, 10));
-        HBox row1 = creatRow(letters1);
+        HBox row1 = createRow(letters1);
         row1.setPadding(new Insets(-20, 10, 10, 10));
-        HBox row2 = creatRow(letters2);
+        HBox row2 = createRow(letters2);
         row2.setPadding(new Insets(-20, 10, 10, 10));
 
 
@@ -96,7 +98,7 @@ public class MainHangmanGame {
         });
 
 
-        StackPane root = new  StackPane();
+        StackPane root = new StackPane();
         root.getChildren().add(row);
         root.getChildren().add(row1);
         row2.setMinWidth(100);
@@ -125,7 +127,7 @@ public class MainHangmanGame {
 
 
 
-    public HBox creatRow(List<String> letters) {
+    public HBox createRow(List<String> letters) {
 
         HBox hBox = new HBox();
         for (String letter : letters) {

@@ -4,21 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ec756e5-61ce-433f-b10f-d8f0bd9e5616" name="Changes" comment="fullscreen">
-      <change afterPath="$PROJECT_DIR$/Hangman1/src/main/java/model/Player.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman1/src/main/java/model/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman1/src/main/java/model/UserSecret.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman1/src/main/java/network/HangmanClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman1/src/main/java/network/IServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_win_19.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_win_19.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_win_19.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_win_19.xml" beforeDir="false" />
+    <list default="true" id="6ec756e5-61ce-433f-b10f-d8f0bd9e5616" name="Changes" comment="Server client pojo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hangman1/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/MainHangmanGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/MainHangmanGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/SceneChoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/SceneChoice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/network/HangmanServer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/model/Player.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/model/UserSecret.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/model/Secret.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/network/HangmanClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/network/HangmanClient.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +65,7 @@
       <recent name="C:\Users\leila\Hangman\Hangman1\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.network in Hangman">
+  <component name="RunManager" selected="Application.Application">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.hangman1.Application" />
       <module name="Hangman" />
@@ -126,23 +118,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="network in Hangman" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Hangman" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="network.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="network" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+    <list>
+      <item itemvalue="Application.Application" />
+      <item itemvalue="Application.HangmanDrawing" />
+      <item itemvalue="Application.OwnWord" />
+      <item itemvalue="Application.VirtualKeyboard" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.network in Hangman" />
         <item itemvalue="Application.Application" />
         <item itemvalue="Application.VirtualKeyboard" />
         <item itemvalue="Application.HangmanDrawing" />
@@ -159,6 +142,14 @@
       <option name="presentableId" value="Default" />
       <updated>1670448207737</updated>
     </task>
+    <task id="LOCAL-00001" summary="Server client pojo">
+      <created>1670957591443</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1670957591443</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -172,12 +163,16 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Server client pojo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Server client pojo" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/Hangman1/src/main/java/model/User.java</url>
-          <line>33</line>
+          <line>31</line>
           <properties class="model.User" method="getName">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />

@@ -7,17 +7,16 @@ public class User {
 
     private String name;
     private String secretWord;
-    private boolean isReady;
     private InetAddress address;
 
 
     public User() {
-        this.isReady = false;
+
     }
     public User(String name, InetAddress address) {
         this.name = name;
         this.address = address;
-        this.isReady = true;
+        this.secretWord = secretWord;
     }
 
     public User(String name, String address) {
@@ -28,7 +27,6 @@ public class User {
         } catch (UnknownHostException e) {
             System.out.println("Invalid address");
         }
-        this.isReady = false;
     }
 
     public String getName() {
@@ -37,8 +35,6 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
-    public boolean isReady() {return isReady;}
-    public void setReady(boolean isReady) {this.isReady = isReady;}
     public InetAddress getAddress() {return address;}
     public void setAddress(InetAddress address) {this.address = address;}
     public String getSecretWord() {

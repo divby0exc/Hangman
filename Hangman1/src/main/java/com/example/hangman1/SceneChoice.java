@@ -1,24 +1,11 @@
 package com.example.hangman1;
 
-import javafx.event.EventHandler;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Line;
 import javafx.stage.Stage;
-import static com.example.hangman1.Spellchecker.*;
-
-import java.nio.file.Path;
-
-import static java.lang.System.*;
 
 public class SceneChoice {
     private Alphabet al = new Alphabet();
@@ -47,14 +34,14 @@ public class SceneChoice {
 
 
 
-    public javafx.scene.Scene mainGame(Stage stage) {
+    public javafx.scene.Scene mainGame() {
         MainHangmanGame sg = new MainHangmanGame();
         Scene scene=sg.startGame();
         return scene;
     }
 
 
-}
+
     public javafx.scene.Scene gameMenu(Stage stage) {
         Canvas canvas = new Canvas(150,150);
         canvas.getGraphicsContext2D();

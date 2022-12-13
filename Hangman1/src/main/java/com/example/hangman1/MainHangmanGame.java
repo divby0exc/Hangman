@@ -73,11 +73,15 @@ public class MainHangmanGame {
         Button button = new Button("OK");
         button.setOnAction(action -> {
             secretWord = (ownWord.getText());
-            System.out.print(secretWord);
-            secretWordArray = dash.repeat(secretWord.length()).toCharArray();
-            secWoDash.setText(new String(secretWordArray));
-            // switch to guess started mode
-            state = "guess-mode";
+            if(Spellchecker.SpellCheck(secretWord)) {
+                System.out.print(secretWord);
+                secretWordArray = dash.repeat(secretWord.length()).toCharArray();
+                secWoDash.setText(new String(secretWordArray));
+                // switch to guess started mode
+                state = "guess-mode";
+            }else {
+                System.out.println(secretWord + " does not exist in our dictionary. Check your spelling");
+            }
         });
         secWoDash = new Label(secretWordInDash);
         secWoDash.setFont(new Font("Arial", 25));

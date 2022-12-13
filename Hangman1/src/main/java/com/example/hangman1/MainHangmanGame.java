@@ -1,7 +1,6 @@
 package com.example.hangman1;
 
 import javafx.geometry.Insets;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -14,6 +13,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 
+import java.io.DataInputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -164,25 +164,25 @@ public class MainHangmanGame {
         return output;
     }
 
-    public void submit() {
+    public DataInputStream submit() {
 
         if (wrongAttempt <= maxChances) {
 
             if (input == null || "".equals(input.trim())) {
                 messageOfInput.setText("Invalid input. Please try again.");
-                return;
+                return null;
             }
 
             if (correctGuesses.contains(input) || wrongGuesses.contains(input)) {
                 messageOfInput.setText("You guessed this letter before. Try another one!");
-                return; // don't do anything and just loop again
+                return null;
             }
 
             // if user guessed the whole word in one go, set the flag to true and skip the loop
             if (secretWord.equals(input)) {
                 userWon = true;
                 messageOfInput.setText("You won.");
-                return;
+                return null;
             }
 
             if (secretWord.contains(input)) {
@@ -221,7 +221,7 @@ public class MainHangmanGame {
                 messageOfInput.setText("\r\nCongrats! You Won!");
                 wrongAttempt = 0;
                 state=  "word-mode";
-                return;
+                return null;
             }
 
             if (wrongAttempt >= maxChances) {
@@ -229,10 +229,11 @@ public class MainHangmanGame {
                 messageOfInput.setText("\r\nSorry! You did not win. The correct word is: \r\n" + secretWord);
                 wrongAttempt = 0;
                 state=  "word-mode";
-                return;
+                return null;
             }
         }
         getImage();
+        return null;
     }
     //get image of hangman drawing
     public void getImage() {

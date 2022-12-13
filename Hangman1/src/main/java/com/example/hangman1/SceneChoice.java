@@ -54,7 +54,7 @@ public class SceneChoice {
     }
 
 
-}
+
     public javafx.scene.Scene gameMenu(Stage stage) {
         Canvas canvas = new Canvas(150,150);
         canvas.getGraphicsContext2D();
@@ -148,7 +148,7 @@ public class SceneChoice {
 
 
     public void helpFuncToPlayListener(Stage stage) {
-        stage.setScene(mainGame());
+        stage.setScene(mainGame(stage));
         stage.setMaximized(true);
     }
     //Skapa 3 olika modes såklart

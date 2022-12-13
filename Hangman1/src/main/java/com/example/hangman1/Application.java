@@ -15,7 +15,9 @@ import java.io.IOException;
 
 public class Application extends javafx.application.Application {
     @Override
-    public void start(Stage stage) {
+    public void start(Stage stage)
+    {
+
         try {
 
             // set title for the stage
@@ -33,9 +35,6 @@ public class Application extends javafx.application.Application {
             // create a button
             Button button = new Button("Guess!");
 
-            FileInputStream inputGalow = new FileInputStream("/home/paraply/IdeaProjects/Hangman/Hangman1/src/main/resources/gallow.jpeg");
-            Image galow = new Image(inputGalow);
-
             // add the label, text field and button
             VBox vbox = new VBox(chars, alphabet, textfield, button);
 
@@ -50,13 +49,13 @@ public class Application extends javafx.application.Application {
             Scene scene = new Scene(vbox, 860, 520);
 
             // create a input stream
-            FileInputStream inputBackground = new FileInputStream("/Prison-jail.png");
+            FileInputStream input = new FileInputStream("Prison-jail.png");
 
             // create a image
-            Image backgroundImage = new Image(inputBackground);
+            Image image = new Image(input);
 
             // create a background image
-            BackgroundImage backgroundimage = new BackgroundImage(backgroundImage,
+            BackgroundImage backgroundimage = new BackgroundImage(image,
                     BackgroundRepeat.NO_REPEAT,
                     BackgroundRepeat.NO_REPEAT,
                     BackgroundPosition.CENTER,
@@ -75,6 +74,7 @@ public class Application extends javafx.application.Application {
         }
 
         catch (Exception e) {
+
             System.out.println(e.getMessage());
         }
     }

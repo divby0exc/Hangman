@@ -6,12 +6,12 @@ import java.io.*;
 import com.example.hangman1.MainHangmanGame;
 import model.User;
 
-public class HangmanClient implements Runnable {
+public class HangmanClient extends Thread {
 
 
-    private Socket clientSocket = null;
-    private DataInputStream input = null;
-    private DataOutputStream out = null;
+    private Socket clientSocket;
+    private DataInputStream input;
+    private DataOutputStream out;
 
 
 
@@ -60,14 +60,17 @@ public class HangmanClient implements Runnable {
 
     @Override
     public void run() {
+        System.out.println("Thread " + "1");
     }
 
     public static void main(String args[]) {
-        User user = new User();
-        String ip = String.valueOf(user.getAddress());
-        HangmanClient hangmanClient = new HangmanClient(ip, 5000);
-        Thread t1 = new Thread(hangmanClient);
-        Thread t2 = new Thread(hangmanClient);
+
+        //String ip =
+        //HangmanClient hangmanClient = new HangmanClient(ip, 5000);
+        Thread t1 = new HangmanClient(String.valueOf(User.getAddress()), 5000);
+        Thread t2 = new HangmanClient(String.valueOf(User.getAddress()), 5000);
+
+
     }
 
 }

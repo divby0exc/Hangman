@@ -1,17 +1,18 @@
-/*package model;
+package model;
 
-import com.example.hangman1.Keyboard;
-
+import java.net.InetAddress;
 import java.util.HashMap;
-import java.util.List;
 
 public interface IModel<User> {
 
 
-    HashMap<User, Keyboard> getAll();
+    HashMap<User, Secret> getAll();
 
-    void addContact();
+    InetAddress getAddress();
+    String getSecret();
+    String addSecret();
 
-    void update(User user);
+
+
+
 }
-*/

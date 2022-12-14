@@ -4,10 +4,11 @@ import java.io.Serializable;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-public class User implements Serializable {
+public abstract class User implements Serializable {
 
     //private String name;
-    private InetAddress address;
+    private static InetAddress address;
+    private static String secretWord;
     private boolean userWon;
 
 
@@ -17,11 +18,18 @@ public class User implements Serializable {
 
     public User(InetAddress address) throws UnknownHostException {
         this.address = InetAddress.getLocalHost();
+        this.secretWord = new Secret().toString();
         this.userWon = false;
 
     }
 
-    public InetAddress getAddress() {return address;}
+
+
+    public static InetAddress getAddress() {return address;}
+
+    public String getSecretWord() {
+        return secretWord;
+    }
 
     public boolean isUserWon() {
         return userWon;

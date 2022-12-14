@@ -14,7 +14,6 @@ public class UserSecret {
     public HashMap<InetAddress, Secret> UserSecret() {
 
         Secret secretWord = new Secret(new Scanner(System.in).next());
-
         userSecretHashMap.put(user.getAddress(), secretWord);
 
         return userSecretHashMap;

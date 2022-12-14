@@ -1,6 +1,6 @@
 package com.example.hangman1;
 
-public interface IHangman<HangmanClient> {
+public interface IHangman {
 
     void User();
 

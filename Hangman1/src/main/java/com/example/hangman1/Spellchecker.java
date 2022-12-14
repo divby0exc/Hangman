@@ -24,7 +24,7 @@ public class Spellchecker {
                 Scanner scanner = new Scanner(swedishDictionary);
                 while (scanner.hasNextLine()) {
                     String line = scanner.nextLine();
-                    if (line.contains(word)) {
+                    if (line.equalsIgnoreCase(word)) {
                         isFound = true;
                         break;
                     }

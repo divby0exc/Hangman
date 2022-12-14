@@ -41,6 +41,9 @@ public class MainHangmanGame {
     List<String> correctGuesses = new ArrayList<>();
     List<String> wrongGuesses = new ArrayList<>();
 
+    static boolean swedish = true;
+    static boolean english = false;
+
     int maxChances = 8;
     Image firstMiss = new Image("1.png");
     Image secondMiss = new Image("2.png");

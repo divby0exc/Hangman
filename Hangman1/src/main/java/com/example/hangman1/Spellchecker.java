@@ -6,8 +6,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-import static com.example.hangman1.SceneChoice.english;
-import static com.example.hangman1.SceneChoice.swedish;
+import static com.example.hangman1.MainHangmanGame.english;
+import static com.example.hangman1.MainHangmanGame.swedish;
 
 public class Spellchecker {
     public static boolean SpellCheck(String word) {

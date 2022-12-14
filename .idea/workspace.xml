@@ -4,21 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ec756e5-61ce-433f-b10f-d8f0bd9e5616" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/Spellchecker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/VirtualKeyboard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/testApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman1/src/main/java/network/HangmanServer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman1/src/main/java/words/GenerateWord.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman1/src/main/resources/english-dictionary.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman1/src/main/resources/gallow_full.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman1/src/main/resources/gallowrope.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman1/src/main/resources/swedish-dictionary.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hangman1/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/HangmanLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/HangmanLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/MainHangmanGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/MainHangmanGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/SceneChoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/SceneChoice.java" afterDir="false" />
+    <list default="true" id="6ec756e5-61ce-433f-b10f-d8f0bd9e5616" name="Changes" comment="Server client pojo">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/IHangman.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/IHangman.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/MouseClickButtons.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/MouseClickButtons.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/VirtualKeyboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/VirtualKeyboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/model/UserSecret.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/model/UserSecret.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/network/HangmanClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/network/HangmanClient.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +62,7 @@
       <recent name="C:\Users\leila\Hangman\Hangman1\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Application">
+  <component name="RunManager" selected="Application.VirtualKeyboard">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.hangman1.Application" />
       <module name="Hangman" />
@@ -83,12 +76,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HangmanDrawing" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.hangman1.HangmanDrawing" />
+    <configuration name="HangmanClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="network.HangmanClient" />
       <module name="Hangman" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.hangman1.*" />
+          <option name="PATTERN" value="network.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -96,12 +89,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HangmanLogic" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.hangman1.HangmanLogic" />
+    <configuration name="HangmanServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="network.HangmanServer" />
       <module name="Hangman" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.hangman1.*" />
+          <option name="PATTERN" value="network.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -109,12 +102,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OwnWord" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.hangman1.OwnWord" />
+    <configuration name="UserSecret" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="model.UserSecret" />
       <module name="Hangman" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.hangman1.*" />
+          <option name="PATTERN" value="model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -136,19 +129,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.HangmanLogic" />
+      <item itemvalue="Application.HangmanClient" />
+      <item itemvalue="Application.HangmanServer" />
+      <item itemvalue="Application.UserSecret" />
       <item itemvalue="Application.Application" />
-      <item itemvalue="Application.HangmanDrawing" />
-      <item itemvalue="Application.OwnWord" />
       <item itemvalue="Application.VirtualKeyboard" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Application" />
         <item itemvalue="Application.VirtualKeyboard" />
-        <item itemvalue="Application.HangmanDrawing" />
-        <item itemvalue="Application.OwnWord" />
-        <item itemvalue="Application.HangmanLogic" />
+        <item itemvalue="Application.HangmanClient" />
+        <item itemvalue="Application.HangmanServer" />
+        <item itemvalue="Application.UserSecret" />
+        <item itemvalue="Application.Application" />
       </list>
     </recent_temporary>
   </component>
@@ -161,6 +154,34 @@
       <option name="presentableId" value="Default" />
       <updated>1670448207737</updated>
     </task>
+    <task id="LOCAL-00001" summary="Server client pojo">
+      <created>1671025132565</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1671025132565</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Server client pojo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Server client pojo" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Hangman$network_in_Hangman.ic" NAME="network in Hangman Coverage Results" MODIFIED="1670932659216" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>network.*</FILTER>
+    </SUITE>
   </component>
 </project>

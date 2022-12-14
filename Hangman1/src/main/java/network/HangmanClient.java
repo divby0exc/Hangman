@@ -15,7 +15,7 @@ public class HangmanClient extends Thread {
     private InetAddress address;
 
 
-    public HangmanClient(InetAddress address, int port) throws UnknownHostException {
+    public HangmanClient(String address, int port) throws UnknownHostException {
         // establish a connection
         try {
             clientSocket = new Socket(address, port);
@@ -77,8 +77,8 @@ public class HangmanClient extends Thread {
 
         //String ip =
         //HangmanClient hangmanClient = new HangmanClient(ip, 5000);
-        Thread t1 = new HangmanClient(user.getAddress(), 5000);
-        Thread t2 = new HangmanClient(user.getAddress(), 5000);
+        Thread t1 = new HangmanClient(String.valueOf(user.getAddress()), 5000);
+        Thread t2 = new HangmanClient(String.valueOf(user.getSecretWord()), 5000);
 
 
     }

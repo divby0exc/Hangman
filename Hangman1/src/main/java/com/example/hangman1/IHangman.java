@@ -9,4 +9,6 @@ public interface IHangman {
     void UserSecret();
 
 
+
+
 }

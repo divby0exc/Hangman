@@ -20,13 +20,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class VirtualKeyboard extends Application {
+public class VirtualKeyboard extends Thread {
 
     String secretWordInDash=("-----");
     String secretWord;
     String alph;
 
-    @Override
+
     public void start(Stage stage) throws IOException {
         List<String> letters = new ArrayList<>(Arrays.asList("Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"));
         List<String> letters1 = new ArrayList<>(Arrays.asList("A", "S", "D", "F", "G", "H", "J", "K", "L"));
@@ -48,16 +48,13 @@ public class VirtualKeyboard extends Application {
 
         Label secWoDash = new Label(secretWordInDash);
         secWoDash.setFont(new Font("Arial", 25));
-        /*secWoDash.setBorder(new Border(new BorderStroke(Color.valueOf("#9E9E9E"),
-                BorderStrokeStyle.SOLID,
-                CornerRadii.EMPTY,
-                BorderWidths.DEFAULT)));*/
+
 
         PasswordField ownWord = new PasswordField();
         Label word = new Label("Enter your word:");
         word.setFont(new Font("Arial", 12));
         word.setTextAlignment(TextAlignment.CENTER);
-        Button button = new Button("OK");
+        Button button = new Button("SET");
         button.setOnAction(action -> {  secretWord=(ownWord.getText());
             if(Spellchecker.SpellCheck(secretWord)) {
                 System.out.println(secretWord);
@@ -105,6 +102,7 @@ public class VirtualKeyboard extends Application {
 
 
     public static void main(String[] args) {
-        launch();
+        Thread t1 = new VirtualKeyboard();
+        t1.start();
     }
 }

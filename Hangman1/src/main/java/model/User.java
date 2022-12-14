@@ -9,12 +9,12 @@ public class User implements Serializable {
     //private String name;
     private InetAddress address;
     private String secretWord;
-    private boolean userWon;
+    private boolean userWinner;
 
 
     public User() throws UnknownHostException {
         this.address = InetAddress.getLocalHost();
-        this.userWon = false;
+        this.userWinner = false;
     }
 
     public User(String secretWord)  {
@@ -37,19 +37,8 @@ public class User implements Serializable {
         this.secretWord = secretWord;
     }
 
-    public boolean isUserWon() {
-        return userWon;
+    public boolean isUserWinner() {
+        return userWinner;
     }
 
 }
-
-    /*public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-
-
-}
-*/

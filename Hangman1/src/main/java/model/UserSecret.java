@@ -2,14 +2,14 @@ package model;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class UserSecret {
 
-
     private static UserSecret instance;
     private User user = new User();
-
     private static HashMap<InetAddress, String> userSecretHashMap = new HashMap<>(4);
 
 
@@ -29,4 +29,5 @@ public class UserSecret {
     public static void main(String[] args) throws UnknownHostException {
         UserSecret.getInstance();
     }
+
 }

@@ -1,5 +1,6 @@
 package com.example.hangman1;
 
+
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -13,20 +14,22 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class MainHangmanGame {
 
+import static com.example.hangman1.SceneChoice.backToMenu;
+
+public class MainHangmanGame {
+    SceneChoice sCh= new SceneChoice();
     String secretWordInDash;
     int wrongAttempt = 0;
     char[] secretWordArray;
     PasswordField ownWord;
     final String dash = "-";
     ;
-    String secretWord="";
+    String secretWord = "";
     String alph;
     String input;
     Label inputCh;
@@ -67,9 +70,8 @@ public class MainHangmanGame {
 
         //Creating box for type the secret word and show it in dash style
         ownWord = new PasswordField();
-        //ownWord.setText(alph);
         Label word = new Label("Enter the secret word:");
-        word.setFont(new Font("Arial", 12));
+        word.setFont(new Font("Arial", 14));
         word.setTextAlignment(TextAlignment.CENTER);
         Button button = new Button("OK");
         button.setOnAction(action -> {
@@ -80,13 +82,15 @@ public class MainHangmanGame {
             // switch to guess started mode
             state = "guess-mode";
         });
+
         secWoDash = new Label(secretWordInDash);
         secWoDash.setFont(new Font("Arial", 25));
 
-
         // creating box for get input of player and show the result
-        inputCh = new Label("Guess a character");
+        inputCh = new Label(" Guess a character:      ");
+        inputCh.setFont(new Font("Arial", 14));
         messageOfInput = new Label();
+        messageOfInput.setFont(new Font("Arial", 14));
         enterACharacter = new TextField();
         submitCharacter = new Button("Submit");
         submitCharacter.setOnAction(actionEvent -> {
@@ -96,17 +100,17 @@ public class MainHangmanGame {
 
         });
 
-
-        StackPane root = new  StackPane();
+        StackPane root = new StackPane();
         root.getChildren().add(row);
         root.getChildren().add(row1);
-        row2.setMinWidth(100);
         root.getChildren().add(row2);
-
+        Scene scene = new Scene(root, 600, 200, Color.BEIGE);
 
         HBox hBox1 = new HBox(word, ownWord, button, secWoDash);
         hBox1.setPadding(new Insets(20, 20, 10, 10));
-        HBox inputplayer = new HBox(inputCh, enterACharacter, submitCharacter, messageOfInput);
+        HBox inputplayer = new HBox(inputCh, enterACharacter, submitCharacter);
+        HBox messageOfInputHB= new HBox(messageOfInput);
+        messageOfInputHB.setPadding(new Insets(30, 10, 10, 10));
         HBox hangmanDrawing = new HBox(imageView);
         imageView.setFitHeight(300);
         imageView.setFitWidth(300);
@@ -115,15 +119,12 @@ public class MainHangmanGame {
         Background bg = new Background(bgi);
         root.setBackground(bg);
 
-        VBox vBox = new VBox(row, row1, row2, hBox1, inputplayer, hangmanDrawing);
-        vBox.setPadding(new Insets(30, 30, 10, 10));
+        VBox vBox = new VBox( backToMenu, hBox1,inputplayer,messageOfInputHB, row, row1, row2,hangmanDrawing);
+        vBox.setPadding(new Insets(30, 30, 20, 20));
         root.getChildren().add(vBox);
         vBox.setSpacing(10);
-
-        Scene scene = new Scene(root, 600, 200, Color.BEIGE);
         return scene;
     }
-
 
 
     public HBox creatRow(List<String> letters) {
@@ -132,12 +133,15 @@ public class MainHangmanGame {
         for (String letter : letters) {
             Button button = new Button(letter);
             button.setStyle("-fx-text-fill: #0000ff");
+            button.setPrefSize(40,40);
             button.setOnAction(action -> {
-                alph= (new String(button.getText()));
-                if (state.equals("word-mode"))
-                    ownWord.setText(ownWord.getText()+alph);
-                else // "guess-mode"
+                alph = (new String(button.getText()));
+                if (state.equals("word-mode")){
+                    ownWord.setText(ownWord.getText() + alph);
+                } else // "guess-mode"
                     enterACharacter.setText(alph);
+                // if player guess whole word
+                //enterACharacter.setText(enterACharacter.getText()+alph);
 
             });
             hBox.getChildren().add(button);
@@ -190,17 +194,17 @@ public class MainHangmanGame {
                 // count the guess as correct only if it's one character
                 if (input.length() == 1) {
                     correctGuesses.add(input);
-                    messageOfInput.setText("\r\nYou guessed right. Guess next letter: ");
+                    messageOfInput.setText("You guessed right. Guess next letter: ");
                 } else {
                     // if it's multiple characters, then it's not a correct guess even if it's part of the secret word
                     wrongGuesses.add(input);
                     wrongAttempt++;
-                    messageOfInput.setText("\r\nYou guessed wrong. you have spent " + wrongAttempt + "/" + maxChances + " of your chances to guess wrong! Guess a new letter: ");
+                    messageOfInput.setText("You guessed wrong. you have spent " + wrongAttempt + "/" + maxChances + " of your chances to guess wrong! Guess a new letter: ");
                 }
             } else {
                 wrongGuesses.add(input);
                 wrongAttempt++;
-                messageOfInput.setText("\r\nYou guessed wrong. you have spent " + wrongAttempt + "/" + maxChances + " of your chances to guess wrong, Guess a new letter: ");
+                messageOfInput.setText("You guessed wrong. you have spent " + wrongAttempt + "/" + maxChances + " of your chances to guess wrong, Guess a new letter: ");
             }
 
 
@@ -219,22 +223,23 @@ public class MainHangmanGame {
 
             if (!new String(secretWordArray).contains(dash)) {
                 userWon = true;
-                messageOfInput.setText("\r\nCongrats! You Won!");
+                messageOfInput.setText("Congrats! You Won!");
                 wrongAttempt = 0;
-                state=  "word-mode";
+                state = "word-mode";
                 return;
             }
 
             if (wrongAttempt >= maxChances) {
                 getImage();
-                messageOfInput.setText("\r\nSorry! You did not win. The correct word is: \r\n" + secretWord);
+                messageOfInput.setText("Sorry! You did not win. The correct word is: \r\n" + secretWord);
                 wrongAttempt = 0;
-                state=  "word-mode";
+                state = "word-mode";
                 return;
             }
         }
         getImage();
     }
+
     //get image of hangman drawing
     public void getImage() {
         switch (wrongAttempt) {
@@ -268,5 +273,5 @@ public class MainHangmanGame {
 
         }
     }
-
 }
+

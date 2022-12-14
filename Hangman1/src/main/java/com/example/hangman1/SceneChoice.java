@@ -2,6 +2,7 @@
 package com.example.hangman1;
 
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Group;
@@ -20,9 +21,7 @@ import javafx.stage.Stage;
 import java.nio.file.Path;
 
 public class SceneChoice {
-    private Alphabet al = new Alphabet();
-    private MouseClickButtons mcb = new MouseClickButtons();
-    private Keyboard key = new Keyboard();
+
     private javafx.scene.Scene whichScene;
     private String howToPlayMultiplayer = "Du ska komma på ett ord för den andre spelarens gubbe. \nDen andre spelaren ska försöka gissa ordet genom att trycka på en bokstav i taget. \nDet går såklart bra att även trycka på tangenterna också. ";
     private String howToPlaySingleplayer = "Du får ett ord av datorn som du ska gissa. \nDu kan trycka på bokstäverna på skärmen eller på tangentbordet. ";
@@ -33,16 +32,20 @@ public class SceneChoice {
     private boolean easy = true; // Limit word length and use simple words
     private boolean gameStarted = false;
     private String guessTheWord = null;
+    static HBox backToMenu;
 
-
-    public javafx.scene.Scene mainGame(Stage stage) {
+    public  javafx.scene.Scene mainGame(Stage stage) {
         MainHangmanGame sg = new MainHangmanGame();
+        Button back = new Button("Back to start menu");
+        backToMenu = new HBox(back);
+        back.setOnAction(e ->
+            stage.setScene(gameMenu(stage)));
         Scene scene=sg.startGame();
         return scene;
     }
 
-    public javafx.scene.Scene gameMenu(Stage stage) {
-        Canvas canvas = new Canvas(150, 150);
+    public  javafx.scene.Scene gameMenu(Stage stage) {
+        Canvas canvas = new Canvas(300, 300);
         canvas.getGraphicsContext2D();
         VBox vBox = new VBox(canvas);
         Button playGame = new Button("SPELA!");

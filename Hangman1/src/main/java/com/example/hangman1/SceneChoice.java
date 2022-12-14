@@ -1,29 +1,27 @@
+
 package com.example.hangman1;
 
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.VPos;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import static com.example.hangman1.Spellchecker.*;
 
 import java.nio.file.Path;
 
-import static java.lang.System.*;
-
 public class SceneChoice {
-    private Alphabet al = new Alphabet();
-    private MouseClickButtons mcb = new MouseClickButtons();
-    private Keyboard key = new Keyboard();
+
     private javafx.scene.Scene whichScene;
     private String howToPlayMultiplayer = "Du ska komma på ett ord för den andre spelarens gubbe. \nDen andre spelaren ska försöka gissa ordet genom att trycka på en bokstav i taget. \nDet går såklart bra att även trycka på tangenterna också. ";
     private String howToPlaySingleplayer = "Du får ett ord av datorn som du ska gissa. \nDu kan trycka på bokstäverna på skärmen eller på tangentbordet. ";
@@ -33,64 +31,72 @@ public class SceneChoice {
     private boolean intermediate = false; // Randomized words in swedish
     private boolean easy = true; // Limit word length and use simple words
     private boolean gameStarted = false;
-    private String guessTheWord = "";
+    private String guessTheWord = null;
+    static HBox backToMenu;
 
-
-    //for spellchecker
-    static boolean swedish = true;   //both should be false from start of application and one (or both?) should later be switched depending on what the player choice is.
-    static boolean english = false;
-
-
-
-    String secretWord;
-    String secretWordInDash = " ".repeat(10);
-
-
-
-    public javafx.scene.Scene mainGame(Stage stage) {
+    public  javafx.scene.Scene mainGame(Stage stage) {
         MainHangmanGame sg = new MainHangmanGame();
+        Button back = new Button("Back to start menu");
+        backToMenu = new HBox(back);
+        back.setOnAction(e ->
+            stage.setScene(gameMenu(stage)));
         Scene scene=sg.startGame();
         return scene;
     }
 
-
-}
-    public javafx.scene.Scene gameMenu(Stage stage) {
-        Canvas canvas = new Canvas(150,150);
+    public  javafx.scene.Scene gameMenu(Stage stage) {
+        Canvas canvas = new Canvas(300, 300);
         canvas.getGraphicsContext2D();
         VBox vBox = new VBox(canvas);
         Button playGame = new Button("SPELA!");
-        playGame.setOnAction(e -> helpFuncToPlayListener(stage));
+        playGame.setOnAction(e -> {
+            stage.setScene(mainGame(stage));
+            stage.setMaximized(true);
+        });
         Button mode = new Button("Svårighetsgrad");
         mode.setOnAction(e -> stage.setScene(mode(stage)));
         Button help = new Button("Hur spelar jag?");
         help.setOnAction(e -> stage.setScene(howToPlay(stage)));
-        vBox.getChildren().addAll(playGame,mode,help);
+        vBox.getChildren().addAll(playGame, mode, help);
         javafx.scene.Scene gameMenuScene = new javafx.scene.Scene(vBox);
 
         return gameMenuScene;
     }
 
     public javafx.scene.Scene mode(Stage stage) {
-        Canvas canvas1 = new Canvas(150,150);
+        Canvas canvas1 = new Canvas(150, 150);
         canvas1.getGraphicsContext2D();
         VBox vBox = new VBox(canvas1);
-        Button singleplayer = new Button("En person");
-        singleplayer.setOnAction(e -> easy = true);
-        Button multiplayer = new Button("Flera spelare");
-        multiplayer.setOnAction(e -> stage.setScene(howToPlay(stage, "multi")));
-        Button interactive = new Button("Rita själv");
-        interactive.setOnAction(e -> stage.setScene(howToPlay(stage, "inter")));
+        Button easy = new Button("Lätt");
+        easy.setOnAction(e -> checkButtonVal("l"));
+        Button inter = new Button("Mellan");
+        inter.setOnAction(e -> checkButtonVal("m"));
+        Button hard = new Button("Svårt");
+        hard.setOnAction(e -> checkButtonVal("h"));
         Button previous = new Button("Gå tillbaka");
         previous.setOnAction(e -> stage.setScene(gameMenu(stage)));
-        vBox.getChildren().addAll(singleplayer,multiplayer,interactive,previous);
+        vBox.getChildren().addAll(easy, inter, hard, previous);
         javafx.scene.Scene howToPlayScene = new javafx.scene.Scene(vBox);
 
         return howToPlayScene;
 
     }
+
+    public void checkButtonVal(String a) {
+        if (a.equals("l")) {
+            easy = true;
+            System.out.println(easy);
+        } else if (a.equals("m")) {
+            intermediate = true;
+            System.out.println(intermediate);
+        } else if (a.equals("h")) {
+            hard = true;
+            System.out.println(hard);
+        }
+    }
+
     public javafx.scene.Scene howToPlay(Stage stage) {
-        Canvas canvas1 = new Canvas(150,150);
+        Canvas canvas1 = new Canvas(150, 150);
         canvas1.getGraphicsContext2D();
         HBox hBox = new HBox(canvas1);
         Button singleplayer = new Button("En person");
@@ -101,33 +107,34 @@ public class SceneChoice {
         interactive.setOnAction(e -> stage.setScene(howToPlay(stage, "inter")));
         Button previous = new Button("Gå tillbaka");
         previous.setOnAction(e -> stage.setScene(gameMenu(stage)));
-        hBox.getChildren().addAll(singleplayer,multiplayer,interactive,previous);
+        hBox.getChildren().addAll(singleplayer, multiplayer, interactive, previous);
         javafx.scene.Scene howToPlayScene = new javafx.scene.Scene(hBox);
 
         return howToPlayScene;
     }
+
     public javafx.scene.Scene howToPlay(Stage stage, String helpPlayers) {
         javafx.scene.Scene helpPlay = null;
-        if(helpPlayers.equalsIgnoreCase("en")) {
-            Canvas canvas = new Canvas(150,150);
+        if (helpPlayers.equalsIgnoreCase("en")) {
+            Canvas canvas = new Canvas(150, 150);
             canvas.getGraphicsContext2D();
             HBox hBox = new HBox(canvas);
-            Label label = new Label(howToPlaySingleplayer+howToPlayEnd);
+            Label label = new Label(howToPlaySingleplayer + howToPlayEnd);
 
             Button previous = new Button("Gå tillbaka");
             previous.setOnAction(e -> stage.setScene(howToPlay(stage)));
             hBox.getChildren().addAll(label, previous);
             helpPlay = new javafx.scene.Scene(hBox);
-        } else if(helpPlayers.equalsIgnoreCase("multi")) {
+        } else if (helpPlayers.equalsIgnoreCase("multi")) {
             Canvas canvas = new Canvas();
             canvas.getGraphicsContext2D();
             HBox hBox = new HBox(canvas);
-            Label label = new Label(howToPlayMultiplayer+howToPlayEnd);
+            Label label = new Label(howToPlayMultiplayer + howToPlayEnd);
             Button previous = new Button("Gå tillbaka");
             previous.setOnAction(e -> stage.setScene(howToPlay(stage)));
             hBox.getChildren().addAll(label, previous);
             helpPlay = new javafx.scene.Scene(hBox);
-        } else if(helpPlayers.equalsIgnoreCase("inter")) {
+        } else if (helpPlayers.equalsIgnoreCase("inter")) {
             Canvas canvas = new Canvas();
             canvas.getGraphicsContext2D();
             HBox hBox = new HBox(canvas);
@@ -139,17 +146,4 @@ public class SceneChoice {
         }
         return helpPlay;
     }
-    public String createDashedWord(String word) {
-        final String dash = "- ";
-        int count = word.length();
-        return dash.repeat(count);
-    }
-
-
-
-    public void helpFuncToPlayListener(Stage stage) {
-        stage.setScene(mainGame());
-        stage.setMaximized(true);
-    }
-    //Skapa 3 olika modes såklart
 }

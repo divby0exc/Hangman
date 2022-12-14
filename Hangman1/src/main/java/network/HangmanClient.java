@@ -12,10 +12,10 @@ public class HangmanClient extends Thread {
     private Socket clientSocket;
     private DataInputStream input;
     private DataOutputStream out;
-    private String address;
+    private InetAddress address;
 
 
-    public HangmanClient(String address, int port) {
+    public HangmanClient(InetAddress address, int port) throws UnknownHostException {
         // establish a connection
         try {
             clientSocket = new Socket(address, port);
@@ -63,12 +63,22 @@ public class HangmanClient extends Thread {
         System.out.println("Thread " + "1");
     }
 
-    public static void main(String args[]) {
+    static User user;
+
+    static {
+        try {
+            user = new User();
+        } catch (UnknownHostException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void main(String args[]) throws UnknownHostException {
 
         //String ip =
         //HangmanClient hangmanClient = new HangmanClient(ip, 5000);
-        Thread t1 = new HangmanClient(String.valueOf(User.getAddress()), 5000);
-        Thread t2 = new HangmanClient(String.valueOf(User.getAddress()), 5000);
+        Thread t1 = new HangmanClient(user.getAddress(), 5000);
+        Thread t2 = new HangmanClient(user.getAddress(), 5000);
 
 
     }

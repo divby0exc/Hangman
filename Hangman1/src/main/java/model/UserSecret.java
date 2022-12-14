@@ -1,40 +1,32 @@
 package model;
 
 import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.HashMap;
 
-public class UserSecret implements IModel<Secret>{
+public class UserSecret {
 
 
-    HashMap<InetAddress, Secret> userSecretHashMap = new HashMap<>(4);
+    private static UserSecret instance;
+    private User user = new User();
+
+    private static HashMap<InetAddress, String> userSecretHashMap = new HashMap<>(4);
 
 
-    public HashMap<InetAddress, Secret> UserSecret() {
+    private UserSecret() throws UnknownHostException {
+        userSecretHashMap.put(user.getAddress(), user.getSecretWord());
 
-        Secret secretWord = new Secret();
-        userSecretHashMap.put(getAddress(), secretWord);
-
-        return userSecretHashMap;
     }
 
-
-    @Override
-    public HashMap<InetAddress, Secret> getAll() {
-        return null;
+    public static UserSecret getInstance() throws UnknownHostException {
+        if(instance == null) {
+            instance = new UserSecret();
+            System.out.println(userSecretHashMap);
+        }
+        return instance;
     }
 
-    @Override
-    public InetAddress getAddress() {
-        return null;
-    }
-
-    @Override
-    public String getSecret() {
-        return null;
-    }
-
-    @Override
-    public String addSecret() {
-        return null;
+    public static void main(String[] args) throws UnknownHostException {
+        UserSecret.getInstance();
     }
 }

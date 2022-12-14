@@ -6,7 +6,7 @@ import java.util.HashMap;
 public interface IModel<User> {
 
 
-    HashMap<InetAddress, Secret> getAll();
+    HashMap<InetAddress, String> getAll();
 
     InetAddress getAddress();
     String getSecret();

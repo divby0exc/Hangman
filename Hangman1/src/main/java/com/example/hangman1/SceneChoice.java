@@ -8,9 +8,7 @@ import javafx.geometry.VPos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
@@ -18,6 +16,7 @@ import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.nio.file.Path;
+import java.util.Objects;
 
 public class SceneChoice {
 
@@ -33,25 +32,25 @@ public class SceneChoice {
     private String guessTheWord = null;
     static HBox backToMenu;
 
-    public javafx.scene.Scene mainGame(Stage stage) {
-        MainHangmanGame sg = new MainHangmanGame();
-        Button back = new Button("Back to start menu");
-        backToMenu = new HBox(back);
-        back.setOnAction(e ->
-                stage.setScene(gameMenu(stage)));
-        Scene scene = sg.startGame();
-        return scene;
+//    public javafx.scene.Scene mainGame(Stage stage) {
+//        MainHangmanGame sg = new MainHangmanGame();
+//        Button back = new Button("Back to start menu");
+//        backToMenu = new HBox(back);
+//        back.setOnAction(e ->
+//                stage.setScene(gameMenu(stage)));
+//        Scene scene = sg.startGame();
+//        return scene;
+//    }
+
+    public javafx.scene.Scene mainGame(Stage stage, String secretWord, int numberOfPlayers) {
+        return GameCreator.createGames(secretWord, numberOfPlayers);
     }
 
     public javafx.scene.Scene gameMenu(Stage stage) {
         Canvas canvas = new Canvas(300, 300);
         canvas.getGraphicsContext2D();
         VBox vBox = new VBox(canvas);
-        Button playGame = new Button("SPELA!");
-        playGame.setOnAction(e -> {
-            stage.setScene(mainGame(stage));
-            stage.setMaximized(true);
-        });
+        var playGame = createPlayGamePane(stage);
         Button mode = new Button("Svårighetsgrad");
         mode.setOnAction(e -> stage.setScene(mode(stage)));
         Button help = new Button("Hur spelar jag?");
@@ -59,6 +58,31 @@ public class SceneChoice {
         vBox.getChildren().addAll(playGame, mode, help);
         javafx.scene.Scene gameMenuScene = new javafx.scene.Scene(vBox);
         return gameMenuScene;
+    }
+
+    Stage gameStage = new Stage();
+    private Pane createPlayGamePane(Stage stage){
+        Button playGame = new Button("SPELA!");
+        PasswordField passwordField = new PasswordField();
+
+        Spinner<Integer> numberOfPlayers = new Spinner<>();
+        // IntegerSpinnerValueFactory(min, max, initialValue)
+        numberOfPlayers.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 4, 1));
+
+        playGame.setOnAction(e -> {
+            if ("".equals(passwordField.getText())){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Please enter the secret word first!");
+                alert.show();
+            } else {
+                gameStage.setScene(mainGame(stage, passwordField.getText(), numberOfPlayers.getValue()));
+                gameStage.setMaximized(true);
+                gameStage.show();
+
+            }
+        });
+        HBox pane = new HBox(playGame, passwordField, numberOfPlayers);
+        return pane;
     }
 
     public javafx.scene.Scene mode(Stage stage) {

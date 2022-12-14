@@ -1,46 +1,41 @@
 package model;
 
+import java.io.Serializable;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-public class User {
+public class User implements Serializable {
 
-    private String name;
-    private String secretWord;
+    //private String name;
     private InetAddress address;
+    private boolean userWon;
 
 
     public User() {
 
     }
-    public User(String name, InetAddress address) {
-        this.name = name;
-        this.address = address;
-        this.secretWord = secretWord;
+
+    public User(InetAddress address) throws UnknownHostException {
+        this.address = InetAddress.getLocalHost();
+        this.userWon = false;
+
     }
 
-    public User(String name, String address) {
-        this.name = name;
+    public InetAddress getAddress() {return address;}
 
-        try {
-            this.address = InetAddress.getByName(address);
-        } catch (UnknownHostException e) {
-            System.out.println("Invalid address");
-        }
+    public boolean isUserWon() {
+        return userWon;
     }
 
-    public String getName() {
+}
+
+    /*public String getName() {
         return name;
     }
     public void setName(String name) {
         this.name = name;
     }
-    public InetAddress getAddress() {return address;}
-    public void setAddress(InetAddress address) {this.address = address;}
-    public String getSecretWord() {
-        return secretWord;
-    }
-    public void setSecretWord(String secretWord) {
-        this.secretWord = secretWord;
-    }
+
+
 }
+*/

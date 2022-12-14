@@ -12,14 +12,14 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
-import model.User;
+
 
 import java.io.DataInputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class MainHangmanGame {
+public class MainHangmanGame extends Thread {
 
 
     String secretWordInDash;
@@ -107,7 +107,7 @@ public class MainHangmanGame {
 
         HBox hBox1 = new HBox(word, ownWord, button, secWoDash);
         hBox1.setPadding(new Insets(20, 20, 10, 10));
-        HBox inputplayer = new HBox(inputCh, enterACharacter, submitCharacter, messageOfInput);
+        HBox inputPlayer = new HBox(inputCh, enterACharacter, submitCharacter, messageOfInput);
         HBox hangmanDrawing = new HBox(imageView);
         imageView.setFitHeight(300);
         imageView.setFitWidth(300);
@@ -116,7 +116,7 @@ public class MainHangmanGame {
         Background bg = new Background(bgi);
         root.setBackground(bg);
 
-        VBox vBox = new VBox(row, row1, row2, hBox1, inputplayer, hangmanDrawing);
+        VBox vBox = new VBox(row, row1, row2, hBox1, inputPlayer, hangmanDrawing);
         vBox.setPadding(new Insets(30, 30, 10, 10));
         root.getChildren().add(vBox);
         vBox.setSpacing(10);
@@ -269,6 +269,13 @@ public class MainHangmanGame {
                 break;
 
         }
+    }
+
+    public static void main(String[] args) {
+        Thread thread1 = new MainHangmanGame();
+        Thread thread2 = new MainHangmanGame();
+        thread1.run();
+        thread2.run();
     }
 
 }

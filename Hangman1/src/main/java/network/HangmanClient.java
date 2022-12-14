@@ -4,26 +4,27 @@ package network;
 import java.net.*;
 import java.io.*;
 import com.example.hangman1.MainHangmanGame;
+import model.User;
 
-public class HangmanClient {
+public class HangmanClient implements Runnable {
 
 
-    private Socket socket = null;
+    private Socket clientSocket = null;
     private DataInputStream input = null;
     private DataOutputStream out = null;
+
 
 
     public HangmanClient(String address, int port) {
         // establish a connection
         try {
-            socket = new Socket(address, port);
+            clientSocket = new Socket(address, port);
             System.out.println("Connected");
-
-
-            input = new DataInputStream(new MainHangmanGame().submit());
-
+            MainHangmanGame hangmanGame = new MainHangmanGame();
+            hangmanGame.startGame();
+            input = new DataInputStream(clientSocket.getInputStream());
             // sends output to the socket
-            out = new DataOutputStream(socket.getOutputStream());
+            out = new DataOutputStream(clientSocket.getOutputStream());
 
         } catch(UnknownHostException u) {
             System.out.println(u);
@@ -50,14 +51,24 @@ public class HangmanClient {
         try {
             input.close();
             out.close();
-            socket.close();
+            clientSocket.close();
         }
         catch(IOException i) {
             System.out.println(i);
         }
     }
 
-    public static void main(String args[]) {
-        HangmanClient hangmanClient = new HangmanClient("127.0.0.1", 5000);
+    @Override
+    public void run() {
     }
+
+    public static void main(String args[]) {
+        User user = new User();
+        String ip = String.valueOf(user.getAddress());
+        HangmanClient hangmanClient = new HangmanClient(ip, 5000);
+        Thread t1 = new Thread(hangmanClient);
+        Thread t2 = new Thread(hangmanClient);
+    }
+
 }
+

@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class UserSecret {
+public class UserSecret implements IModel<User> {
+
 
     private static UserSecret instance;
     private User user = new User();
@@ -14,20 +15,33 @@ public class UserSecret {
 
 
     private UserSecret() throws UnknownHostException {
+        user.setSecretWord("test");
         userSecretHashMap.put(user.getAddress(), user.getSecretWord());
-
     }
 
-    public static UserSecret getInstance() throws UnknownHostException {
-        if(instance == null) {
-            instance = new UserSecret();
-            System.out.println(userSecretHashMap);
-        }
-        return instance;
+    @Override
+    public HashMap<InetAddress, String> getAll() {
+        return null;
+    }
+
+    @Override
+    public InetAddress getAddress() {
+        return null;
+    }
+
+    @Override
+    public String getSecret() {
+        return null;
+    }
+
+    @Override
+    public String addSecret() {
+        return null;
     }
 
     public static void main(String[] args) throws UnknownHostException {
-        UserSecret.getInstance();
+
     }
+
 
 }

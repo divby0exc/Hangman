@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class VirtualKeyboard extends Thread {
+public class VirtualKeyboard {
 
     String secretWordInDash=("-----");
     String secretWord;
@@ -101,8 +101,5 @@ public class VirtualKeyboard extends Thread {
     }
 
 
-    public static void main(String[] args) {
-        Thread t1 = new VirtualKeyboard();
-        t1.start();
-    }
+
 }

@@ -271,11 +271,5 @@ public class MainHangmanGame extends Thread {
         }
     }
 
-    public static void main(String[] args) {
-        Thread thread1 = new MainHangmanGame();
-        Thread thread2 = new MainHangmanGame();
-        thread1.run();
-        thread2.run();
-    }
 
 }

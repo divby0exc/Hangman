@@ -3,29 +3,34 @@ package network;
 
 import java.net.*;
 import java.io.*;
-import com.example.hangman1.MainHangmanGame;
-import model.User;
 
-public class HangmanClient extends Thread {
+import com.example.hangman1.Application;
+import com.example.hangman1.IHangman;
+import com.example.hangman1.VirtualKeyboard;
+
+public class HangmanClient implements Runnable {
 
 
-    private Socket clientSocket;
-    private DataInputStream input;
+    Socket client;
+    private DataInputStream in;
     private DataOutputStream out;
-    private InetAddress address;
 
 
-    public HangmanClient(String address, int port) throws UnknownHostException {
+
+    public HangmanClient(String address, int port) {
+
         // establish a connection
         try {
-            clientSocket = new Socket(address, port);
-            System.out.println("Connected");
-            MainHangmanGame hangmanGame = new MainHangmanGame();
-            hangmanGame.startGame();
-            input = new DataInputStream(clientSocket.getInputStream());
-            // sends output to the socket
-            out = new DataOutputStream(clientSocket.getOutputStream());
 
+            client = new Socket("127.0.0.1", 5000);
+            System.out.println("Connected");
+
+            out = new DataOutputStream(client.getOutputStream());
+            in = new DataInputStream(client.getInputStream());
+            // sends output to the socket
+            Application.launch();
+
+            in.read("test".getBytes());
         } catch(UnknownHostException u) {
             System.out.println(u);
 
@@ -34,24 +39,13 @@ public class HangmanClient extends Thread {
         }
 
 
-        String line = "";
 
-        // Reads until exit code 0.
-        while (!line.equals("0")) {
-            try {
-                line = input.readUTF();
-                out.writeUTF(line);
-            }
-            catch(IOException i) {
-                System.out.println(i);
-            }
-        }
 
         // close the connection
         try {
-            input.close();
+            in.close();
             out.close();
-            clientSocket.close();
+            client.close();
         }
         catch(IOException i) {
             System.out.println(i);
@@ -60,28 +54,12 @@ public class HangmanClient extends Thread {
 
     @Override
     public void run() {
-        System.out.println("Thread " + "1");
-    }
-
-    static User user;
-
-    static {
-        try {
-            user = new User();
-        } catch (UnknownHostException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public static void main(String args[]) throws UnknownHostException {
-
-        //String ip =
-        //HangmanClient hangmanClient = new HangmanClient(ip, 5000);
-        Thread t1 = new HangmanClient(String.valueOf(user.getAddress()), 5000);
-        Thread t2 = new HangmanClient(String.valueOf(user.getSecretWord()), 5000);
-
 
     }
 
+    public static void main(String[] args) {
+        HangmanClient hangmanClient = new HangmanClient("127.0.0.1", 6666);
+        hangmanClient.run();
+    }
 }
 

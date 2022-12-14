@@ -6,7 +6,6 @@ import java.net.UnknownHostException;
 
 public class User implements Serializable {
 
-    //private String name;
     private InetAddress address;
     private String secretWord;
     private boolean userWinner;
@@ -20,7 +19,6 @@ public class User implements Serializable {
     public User(String secretWord)  {
         this.secretWord = secretWord;
     }
-
 
 
     public InetAddress getAddress() {return address;}

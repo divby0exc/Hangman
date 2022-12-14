@@ -1,14 +1,11 @@
 package com.example.hangman1;
 
+import com.example.hangman1.MainHangmanGame;
+
 public interface IHangman {
 
-    void User();
-
-    void Secret();
-
-    void UserSecret();
-
-
+    void start();
+    void submit();
 
 
 }

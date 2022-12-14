@@ -8,7 +8,7 @@ public class Secret extends User {
 
 
     public Secret() {
-        this.secretWord = new Scanner(System.in).next();
+        secretWord = new Scanner(System.in).next();
     }
 
 }

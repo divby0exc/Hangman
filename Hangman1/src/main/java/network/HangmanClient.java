@@ -12,7 +12,7 @@ public class HangmanClient extends Thread {
     private Socket clientSocket;
     private DataInputStream input;
     private DataOutputStream out;
-
+    private String address;
 
 
     public HangmanClient(String address, int port) {

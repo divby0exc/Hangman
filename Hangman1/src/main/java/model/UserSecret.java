@@ -19,7 +19,7 @@ public class UserSecret implements IModel<Secret>{
 
 
     @Override
-    public HashMap<Secret, Secret> getAll() {
+    public HashMap<InetAddress, Secret> getAll() {
         return null;
     }
 

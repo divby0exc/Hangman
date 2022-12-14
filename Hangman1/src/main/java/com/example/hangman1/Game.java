@@ -79,7 +79,7 @@ public class Game {
         enterACharacter = new TextField();
         submitCharacter = new Button("Submit");
         submitCharacter.setOnAction(actionEvent -> {
-            input = (enterACharacter.getText());
+            input = (enterACharacter.getText().toUpperCase());
             submit();
             enterACharacter.setText("");
 
@@ -91,7 +91,7 @@ public class Game {
         root.getChildren().add(row2);
 
         HBox hBox1 = new HBox(secWoDash);
-        hBox1.setPadding(new Insets(20, 20, 10, 10));
+        hBox1.setPadding(new Insets(60, 20, 10, 10));
         HBox inputplayer = new HBox(inputCh, enterACharacter, submitCharacter);
         HBox messageOfInputHB= new HBox(messageOfInput);
         messageOfInputHB.setPadding(new Insets(30, 10, 10, 10));
@@ -104,7 +104,7 @@ public class Game {
         root.setBackground(bg);
 
         VBox vBox = new VBox(hBox1,inputplayer,messageOfInputHB, row, row1, row2,hangmanDrawing);
-        vBox.setPadding(new Insets(30, 30, 20, 20));
+        vBox.setPadding(new Insets(40, 30, 20, 20));
         root.getChildren().add(vBox);
         vBox.setSpacing(10);
         return root;

@@ -1,7 +1,6 @@
 package com.example.hangman1;
 
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Color;
@@ -15,7 +14,6 @@ public class GameCreator {
             flowPane.getChildren().add(new Game(secretWord).startGame());
         }
         ScrollPane scrollPane = new ScrollPane();
-//        scrollPane.setMaxWidth(2000);
         scrollPane.fitToWidthProperty().set(true);
         scrollPane.setContent(flowPane);
         Scene scene = new Scene(scrollPane, 550, 200, Color.BEIGE);

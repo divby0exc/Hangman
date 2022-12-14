@@ -1,24 +1,14 @@
 
 package com.example.hangman1;
 
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.geometry.VPos;
-import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
-import javafx.scene.shape.Line;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import java.nio.file.Path;
-import java.util.Objects;
 
 public class SceneChoice {
+
+    Stage gameStage = new Stage();
 
     private javafx.scene.Scene whichScene;
     private String howToPlayMultiplayer = "Du ska komma på ett ord för den andre spelarens gubbe. \nDen andre spelaren ska försöka gissa ordet genom att trycka på en bokstav i taget. \nDet går såklart bra att även trycka på tangenterna också. ";
@@ -31,16 +21,6 @@ public class SceneChoice {
     private boolean gameStarted = false;
     private String guessTheWord = null;
     static HBox backToMenu;
-
-//    public javafx.scene.Scene mainGame(Stage stage) {
-//        MainHangmanGame sg = new MainHangmanGame();
-//        Button back = new Button("Back to start menu");
-//        backToMenu = new HBox(back);
-//        back.setOnAction(e ->
-//                stage.setScene(gameMenu(stage)));
-//        Scene scene = sg.startGame();
-//        return scene;
-//    }
 
     public javafx.scene.Scene mainGame(Stage stage, String secretWord, int numberOfPlayers) {
         return GameCreator.createGames(secretWord, numberOfPlayers);
@@ -60,13 +40,15 @@ public class SceneChoice {
         return gameMenuScene;
     }
 
-    Stage gameStage = new Stage();
+
     private Pane createPlayGamePane(Stage stage){
         Button playGame = new Button("SPELA!");
+        Label lblSecretWord = new Label("Secret Word:");
         PasswordField passwordField = new PasswordField();
+        Label lblNumberOfPlayers = new Label("Number Of Players:");
 
         Spinner<Integer> numberOfPlayers = new Spinner<>();
-        // IntegerSpinnerValueFactory(min, max, initialValue)
+        // min, max, initialValue
         numberOfPlayers.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 4, 1));
 
         playGame.setOnAction(e -> {
@@ -81,7 +63,8 @@ public class SceneChoice {
 
             }
         });
-        HBox pane = new HBox(playGame, passwordField, numberOfPlayers);
+        HBox pane = new HBox(playGame, lblSecretWord, passwordField, lblNumberOfPlayers, numberOfPlayers);
+        pane.setSpacing(5); // 5 pixels space between elements in the hbox
         return pane;
     }
 

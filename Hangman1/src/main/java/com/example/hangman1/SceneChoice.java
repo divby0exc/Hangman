@@ -17,7 +17,6 @@ import javafx.scene.layout.*;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
 import java.nio.file.Path;
 
 public class SceneChoice {
@@ -34,17 +33,17 @@ public class SceneChoice {
     private String guessTheWord = null;
     static HBox backToMenu;
 
-    public  javafx.scene.Scene mainGame(Stage stage) {
+    public javafx.scene.Scene mainGame(Stage stage) {
         MainHangmanGame sg = new MainHangmanGame();
         Button back = new Button("Back to start menu");
         backToMenu = new HBox(back);
         back.setOnAction(e ->
-            stage.setScene(gameMenu(stage)));
-        Scene scene=sg.startGame();
+                stage.setScene(gameMenu(stage)));
+        Scene scene = sg.startGame();
         return scene;
     }
 
-    public  javafx.scene.Scene gameMenu(Stage stage) {
+    public javafx.scene.Scene gameMenu(Stage stage) {
         Canvas canvas = new Canvas(300, 300);
         canvas.getGraphicsContext2D();
         VBox vBox = new VBox(canvas);
@@ -59,7 +58,6 @@ public class SceneChoice {
         help.setOnAction(e -> stage.setScene(howToPlay(stage)));
         vBox.getChildren().addAll(playGame, mode, help);
         javafx.scene.Scene gameMenuScene = new javafx.scene.Scene(vBox);
-
         return gameMenuScene;
     }
 
@@ -77,7 +75,6 @@ public class SceneChoice {
         previous.setOnAction(e -> stage.setScene(gameMenu(stage)));
         vBox.getChildren().addAll(easy, inter, hard, previous);
         javafx.scene.Scene howToPlayScene = new javafx.scene.Scene(vBox);
-
         return howToPlayScene;
 
     }

@@ -31,10 +31,19 @@ public class Game {
     Label messageOfInput;
     Label secWoDash;
     TextField enterACharacter;
+    TextField enterYourName;
     Button submitCharacter;
+    Button submitYourName;
     boolean userWon = false;
+    Label showName= new Label();
     List<String> correctGuesses = new ArrayList<>();
     List<String> wrongGuesses = new ArrayList<>();
+    String inputName;
+    String name="";
+
+    private final static int MODE_WORD = 1;
+    private final static int MODE_GUESS = 2;
+    private int state = MODE_WORD;
 
     int maxChances = 8;
     Image firstMiss = new Image("1.png");
@@ -70,20 +79,23 @@ public class Game {
         secWoDash.setText(new String(secretWordArray));
 
         // creating box for get input of player and show the result
-        inputCh = new Label(" Guess a character:      ");
+        inputCh = new Label(" Guess a character:");
         inputCh.setFont(new Font("Arial", 14));
         messageOfInput = new Label();
         messageOfInput.setFont(new Font("Arial", 14));
         messageOfInput.setMaxWidth(400);
         messageOfInput.setWrapText(true);
         enterACharacter = new TextField();
+        enterACharacter.setOnMouseClicked(mouseEvent -> {
+            state = MODE_GUESS;
+        });
         submitCharacter = new Button("Submit");
         submitCharacter.setOnAction(actionEvent -> {
             input = (enterACharacter.getText().toUpperCase());
             submit();
             enterACharacter.setText("");
-
         });
+
 
         StackPane root = new StackPane();
         root.getChildren().add(row);
@@ -91,20 +103,36 @@ public class Game {
         root.getChildren().add(row2);
 
         HBox hBox1 = new HBox(secWoDash);
-        hBox1.setPadding(new Insets(60, 20, 10, 10));
+        hBox1.setPadding(new Insets(0, 20, 10, 10));
         HBox inputplayer = new HBox(inputCh, enterACharacter, submitCharacter);
         HBox messageOfInputHB= new HBox(messageOfInput);
-        messageOfInputHB.setPadding(new Insets(30, 10, 10, 10));
+        messageOfInputHB.setPadding(new Insets(0, 10, 10, 10));
         HBox hangmanDrawing = new HBox(imageView);
-        imageView.setFitHeight(100);
-        imageView.setFitWidth(100);
+        imageView.setFitHeight(150);
+        imageView.setFitWidth(150);
         Image img = new Image("background-prison-cell.jpg");
         BackgroundImage bgi = new BackgroundImage(img, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         Background bg = new Background(bgi);
         root.setBackground(bg);
 
-        VBox vBox = new VBox(hBox1,inputplayer,messageOfInputHB, row, row1, row2,hangmanDrawing);
-        vBox.setPadding(new Insets(40, 30, 20, 20));
+        Label enterName= new Label("Enter your name:");
+        enterYourName = new TextField();
+        submitYourName = new Button("Submit");
+        submitYourName.setOnAction(actionEvent -> {
+            name=(enterYourName.getText());
+            showName.setText("Welcome to game " +name);
+            enterYourName.setText("");
+        });
+        enterYourName.setOnMouseClicked(mouseEvent -> {
+            state = MODE_WORD;
+        });
+
+
+            HBox enterPlayerName= new HBox(enterName,enterYourName,submitYourName,showName);
+            enterPlayerName.setPadding(new Insets(150, 10, 10, 10));
+
+        VBox vBox = new VBox(enterPlayerName,inputplayer,hBox1,messageOfInputHB, row, row1, row2,hangmanDrawing);
+        vBox.setPadding(new Insets(20, 30, 20, 20));
         root.getChildren().add(vBox);
         vBox.setSpacing(10);
         return root;
@@ -119,8 +147,11 @@ public class Game {
             button.setStyle("-fx-text-fill: #0000ff");
             button.setPrefSize(40,40);
             button.setOnAction(action -> {
-                alph = (new String(button.getText()));
-                enterACharacter.setText(alph);
+                alph = (button.getText());
+                if (state == MODE_WORD){
+                    enterYourName.setText(enterYourName.getText() + alph);
+                } else // MODE_GUESS
+                    enterACharacter.setText(alph);
                 // if player guess whole word
                 //enterACharacter.setText(enterACharacter.getText()+alph);
             });
@@ -210,7 +241,7 @@ public class Game {
 
             if (wrongAttempt >= maxChances) {
                 getImage();
-                messageOfInput.setText("Sorry! You did not win. The correct word is: \r\n" + secretWord);
+                messageOfInput.setText("Sorry! You did not win. The correct word is: " + secretWord);
                 wrongAttempt = 0;
                 return;
             }

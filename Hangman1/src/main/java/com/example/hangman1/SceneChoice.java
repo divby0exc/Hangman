@@ -49,7 +49,7 @@ public class SceneChoice {
 
         Spinner<Integer> numberOfPlayers = new Spinner<>();
         // min, max, initialValue
-        numberOfPlayers.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 4, 1));
+        numberOfPlayers.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 6, 1));
 
         playGame.setOnAction(e -> {
             if ("".equals(passwordField.getText())){

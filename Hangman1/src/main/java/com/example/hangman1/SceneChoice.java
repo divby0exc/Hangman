@@ -61,16 +61,9 @@ public class SceneChoice {
 
         Label lblLanguage = new Label("Select Language");
 
-        ObservableList<String> languages = FXCollections.observableArrayList("Swedish", "English");
+        String languages[] = {"Swedish", "English"};
 
-        Spinner<String> spinner = new Spinner<String>();
-
-        SpinnerValueFactory<String> valueFactory = new SpinnerValueFactory.ListSpinnerValueFactory<String>(languages);
-
-        valueFactory.setValue("Swedish");
-        spinner.setValueFactory(valueFactory);
-
-
+        ComboBox comboBox = new ComboBox(FXCollections.observableArrayList(languages));
 
 
 
@@ -86,14 +79,17 @@ public class SceneChoice {
                 alert.show();
 
 
+               // Spellchecker.SpellCheck(passwordField.getText(), (String) comboBox.getValue());
+
             } else {
+                if (Spellchecker.SpellCheck(passwordField.getText(), (String) comboBox.getValue())) {
                 gameStage.setScene(mainGame(stage, passwordField.getText(), numberOfPlayers.getValue()));
                 gameStage.setMaximized(true);
-                gameStage.show();
+                gameStage.show(); }
 
             }
         });
-        HBox pane = new HBox(playGame, lblLanguage, spinner, lblSecretWord, passwordField, lblNumberOfPlayers, numberOfPlayers);
+        HBox pane = new HBox(playGame, lblLanguage, comboBox, lblSecretWord, passwordField, lblNumberOfPlayers, numberOfPlayers);
         pane.setSpacing(5); // 5 pixels space between elements in the hbox
         return pane;
     }

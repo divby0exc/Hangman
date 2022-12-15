@@ -6,8 +6,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-import static com.example.hangman1.MainHangmanGame.english;
-import static com.example.hangman1.MainHangmanGame.swedish;
 
 public class Spellchecker {
     public static boolean SpellCheck(String word, String language) {
@@ -19,7 +17,7 @@ public class Spellchecker {
 
         boolean isFound = false;
 
-        if(swedish) {
+        if(language.equalsIgnoreCase("Swedish")) {
             try {
                 Scanner scanner = new Scanner(swedishDictionary);
                 while (scanner.hasNextLine()) {
@@ -35,7 +33,7 @@ public class Spellchecker {
             }
         }
 
-        if(english) {
+        if(language.equalsIgnoreCase("English")) {
             try {
                 Scanner scanner = new Scanner(englishDictionary);
                 while (scanner.hasNextLine()) {
@@ -51,9 +49,9 @@ public class Spellchecker {
             }
         }
 
-        if(english && swedish){
+        /* if(english && swedish){
             //if wanting to play with both swedish and english
-        }
+        } */
 
         if (isFound) {
             System.out.println("Looks good");

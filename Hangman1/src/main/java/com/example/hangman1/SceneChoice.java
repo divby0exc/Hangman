@@ -65,6 +65,8 @@ public class SceneChoice {
 
         ComboBox comboBox = new ComboBox(FXCollections.observableArrayList(languages));
 
+        comboBox.setValue("Swedish");
+
 
 
 
@@ -78,14 +80,17 @@ public class SceneChoice {
                 alert.setContentText("Please enter the secret word first!");
                 alert.show();
 
-
-               // Spellchecker.SpellCheck(passwordField.getText(), (String) comboBox.getValue());
-
             } else {
+
                 if (Spellchecker.SpellCheck(passwordField.getText(), (String) comboBox.getValue())) {
                 gameStage.setScene(mainGame(stage, passwordField.getText(), numberOfPlayers.getValue()));
                 gameStage.setMaximized(true);
-                gameStage.show(); }
+                gameStage.show(); } else if (!Spellchecker.SpellCheck(passwordField.getText(), (String) comboBox.getValue())) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("Word invalid. Please check your spelling");
+                    alert.show();
+
+                }
 
             }
         });

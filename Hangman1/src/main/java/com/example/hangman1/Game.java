@@ -19,6 +19,7 @@ import java.util.List;
 import static com.example.hangman1.SceneChoice.backToMenu;
 
 public class Game {
+    String lo;
     String secretWordInDash;
     int wrongAttempt = 0;
     char[] secretWordArray;

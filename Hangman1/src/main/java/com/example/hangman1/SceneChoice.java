@@ -8,6 +8,7 @@ import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
@@ -40,9 +41,9 @@ public class SceneChoice {
         canvas.getGraphicsContext2D();
         VBox vBox = new VBox(canvas);
         var playGame = createPlayGamePane(stage);
-        Button mode = new Button("Svårighetsgrad");
+        Button mode = new Button("Difficulty");
         mode.setOnAction(e -> stage.setScene(mode(stage)));
-        Button help = new Button("Hur spelar jag?");
+        Button help = new Button("How to play?");
         help.setOnAction(e -> stage.setScene(howToPlay(stage)));
         vBox.getChildren().addAll(playGame, mode, help);
         javafx.scene.Scene gameMenuScene = new javafx.scene.Scene(vBox);
@@ -51,7 +52,7 @@ public class SceneChoice {
 
 
     private Pane createPlayGamePane(Stage stage){
-        Button playGame = new Button("SPELA!");
+        Button playGame = new Button("Start game!");
         Label lblSecretWord = new Label("Secret Word:");
         PasswordField passwordField = new PasswordField();
         Label lblNumberOfPlayers = new Label("Number Of Players:");
@@ -103,13 +104,13 @@ public class SceneChoice {
         Canvas canvas1 = new Canvas(150, 150);
         canvas1.getGraphicsContext2D();
         VBox vBox = new VBox(canvas1);
-        Button easy = new Button("Lätt");
+        Button easy = new Button("Easy");
         easy.setOnAction(e -> checkButtonVal("l"));
-        Button inter = new Button("Mellan");
+        Button inter = new Button("Normal");
         inter.setOnAction(e -> checkButtonVal("m"));
-        Button hard = new Button("Svårt");
+        Button hard = new Button("Hard");
         hard.setOnAction(e -> checkButtonVal("h"));
-        Button previous = new Button("Gå tillbaka");
+        Button previous = new Button("Go back");
         previous.setOnAction(e -> stage.setScene(gameMenu(stage)));
         vBox.getChildren().addAll(easy, inter, hard, previous);
         javafx.scene.Scene howToPlayScene = new javafx.scene.Scene(vBox);
@@ -134,13 +135,13 @@ public class SceneChoice {
         Canvas canvas1 = new Canvas(150, 150);
         canvas1.getGraphicsContext2D();
         HBox hBox = new HBox(canvas1);
-        Button singleplayer = new Button("En person");
+        Button singleplayer = new Button("One person");
         singleplayer.setOnAction(e -> stage.setScene(howToPlay(stage, "en")));
-        Button multiplayer = new Button("Flera spelare");
+        Button multiplayer = new Button("Multiplayer");
         multiplayer.setOnAction(e -> stage.setScene(howToPlay(stage, "multi")));
-        Button interactive = new Button("Rita själv");
+        Button interactive = new Button("Own drawing mode");
         interactive.setOnAction(e -> stage.setScene(howToPlay(stage, "inter")));
-        Button previous = new Button("Gå tillbaka");
+        Button previous = new Button("Go back");
         previous.setOnAction(e -> stage.setScene(gameMenu(stage)));
         hBox.getChildren().addAll(singleplayer, multiplayer, interactive, previous);
         javafx.scene.Scene howToPlayScene = new javafx.scene.Scene(hBox);
@@ -156,7 +157,7 @@ public class SceneChoice {
             HBox hBox = new HBox(canvas);
             Label label = new Label(howToPlaySingleplayer + howToPlayEnd);
 
-            Button previous = new Button("Gå tillbaka");
+            Button previous = new Button("Go back");
             previous.setOnAction(e -> stage.setScene(howToPlay(stage)));
             hBox.getChildren().addAll(label, previous);
             helpPlay = new javafx.scene.Scene(hBox);
@@ -165,7 +166,7 @@ public class SceneChoice {
             canvas.getGraphicsContext2D();
             HBox hBox = new HBox(canvas);
             Label label = new Label(howToPlayMultiplayer + howToPlayEnd);
-            Button previous = new Button("Gå tillbaka");
+            Button previous = new Button("Go back");
             previous.setOnAction(e -> stage.setScene(howToPlay(stage)));
             hBox.getChildren().addAll(label, previous);
             helpPlay = new javafx.scene.Scene(hBox);
@@ -174,7 +175,7 @@ public class SceneChoice {
             canvas.getGraphicsContext2D();
             HBox hBox = new HBox(canvas);
             Label label = new Label(howToPlayInteractive);
-            Button previous = new Button("Gå tillbaka");
+            Button previous = new Button("Go back");
             previous.setOnAction(e -> stage.setScene(howToPlay(stage)));
             hBox.getChildren().addAll(label, previous);
             helpPlay = new javafx.scene.Scene(hBox);

@@ -15,6 +15,8 @@ public class Spellchecker {
 
 
 
+
+
         boolean isFound = false;
 
         if(language.equalsIgnoreCase("Swedish")) {
@@ -22,7 +24,7 @@ public class Spellchecker {
                 Scanner scanner = new Scanner(swedishDictionary);
                 while (scanner.hasNextLine()) {
                     String line = scanner.nextLine();
-                    if (line.contains(word)) {
+                    if (line.contains(word.toLowerCase())) {
                         isFound = true;
                         break;
                     }
@@ -38,7 +40,7 @@ public class Spellchecker {
                 Scanner scanner = new Scanner(englishDictionary);
                 while (scanner.hasNextLine()) {
                     String line = scanner.nextLine();
-                    if (line.contains(word)) {
+                    if (line.contains(word.toLowerCase())) {
                         isFound = true;
                         break;
                     }

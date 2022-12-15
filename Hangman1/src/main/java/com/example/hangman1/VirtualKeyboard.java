@@ -1,10 +1,9 @@
 package com.example.hangman1;
 
-import javafx.application.Application;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -20,7 +19,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class VirtualKeyboard {
+public class VirtualKeyboard implements Runnable {
 
     String secretWordInDash=("-----");
     String secretWord;
@@ -101,5 +100,13 @@ public class VirtualKeyboard {
     }
 
 
+    @Override
+    public void run() {
 
+    }
+
+    public static void main(String[] args) {
+        VirtualKeyboard virtualKeyboard = new VirtualKeyboard();
+        virtualKeyboard.run();
+    }
 }

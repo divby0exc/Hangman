@@ -3,11 +3,10 @@ package network;
 
 import java.net.*;
 import java.io.*;
-
-import com.example.hangman1.Application;
-import com.example.hangman1.IHangman;
 import com.example.hangman1.Keyboard;
-import com.example.hangman1.VirtualKeyboard;
+import com.example.hangman1.MainHangmanGame;
+import javafx.application.Application;
+
 
 public class HangmanClient implements Runnable {
 
@@ -28,8 +27,8 @@ public class HangmanClient implements Runnable {
             out = new DataOutputStream(client.getOutputStream());
             in = new DataInputStream(client.getInputStream());
             // sends output to the socket
-            Keyboard keyboard = new Keyboard();
-            String line = keyboard.toString();
+
+            String line;
 
             while ((line = String.valueOf(in.readChar())) != null) {
                 if (line.equals("0")) {
@@ -60,6 +59,9 @@ public class HangmanClient implements Runnable {
 
     public static void main(String[] args) throws IOException {
         HangmanClient hangmanClient = new HangmanClient("127.0.0.1", 5000);
+        MainHangmanGame mainHangmanGame = new MainHangmanGame();
         hangmanClient.run();
+        mainHangmanGame.startGame();
+
     }
 }

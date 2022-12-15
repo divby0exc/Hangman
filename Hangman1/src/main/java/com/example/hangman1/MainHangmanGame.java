@@ -41,6 +41,9 @@ public class MainHangmanGame {
     List<String> correctGuesses = new ArrayList<>();
     List<String> wrongGuesses = new ArrayList<>();
 
+    static boolean swedish = true;
+    static boolean english = false;
+
     int maxChances = 8;
     Image firstMiss = new Image("1.png");
     Image secondMiss = new Image("2.png");
@@ -76,11 +79,15 @@ public class MainHangmanGame {
         Button button = new Button("OK");
         button.setOnAction(action -> {
             secretWord = (ownWord.getText());
-            System.out.print(secretWord);
-            secretWordArray = dash.repeat(secretWord.length()).toCharArray();
-            secWoDash.setText(new String(secretWordArray));
-            // switch to guess started mode
-            state = "guess-mode";
+            if(Spellchecker.SpellCheck(secretWord)) {
+                System.out.print(secretWord);
+                secretWordArray = dash.repeat(secretWord.length()).toCharArray();
+                secWoDash.setText(new String(secretWordArray));
+                // switch to guess started mode
+                state = "guess-mode";
+            }else {
+                System.out.println(secretWord + " does not exist in our dictionary. Check your spelling");
+            }
         });
 
         secWoDash = new Label(secretWordInDash);

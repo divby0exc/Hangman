@@ -18,8 +18,6 @@ import java.util.List;
 
 public class SceneChoice {
 
-    Stage gameStage = new Stage();
-
     private javafx.scene.Scene whichScene;
     private String howToPlayMultiplayer = "Du ska komma på ett ord för den andre spelarens gubbe. \nDen andre spelaren ska försöka gissa ordet genom att trycka på en bokstav i taget. \nDet går såklart bra att även trycka på tangenterna också. ";
     private String howToPlaySingleplayer = "Du får ett ord av datorn som du ska gissa. \nDu kan trycka på bokstäverna på skärmen eller på tangentbordet. ";
@@ -33,7 +31,9 @@ public class SceneChoice {
     static HBox backToMenu;
 
     public javafx.scene.Scene mainGame(Stage stage, String secretWord, int numberOfPlayers) {
+
         return GameCreator.createGames(secretWord, numberOfPlayers);
+
     }
 
     public javafx.scene.Scene gameMenu(Stage stage) {
@@ -56,8 +56,6 @@ public class SceneChoice {
         Label lblSecretWord = new Label("Secret Word:");
         PasswordField passwordField = new PasswordField();
         Label lblNumberOfPlayers = new Label("Number Of Players:");
-
-
 
 
         Label lblLanguage = new Label("Select Language");
@@ -84,9 +82,9 @@ public class SceneChoice {
             } else {
 
                 if (Spellchecker.SpellCheck(passwordField.getText(), (String) comboBox.getValue())) {
-                gameStage.setScene(mainGame(stage, passwordField.getText(), numberOfPlayers.getValue()));
-                gameStage.setMaximized(true);
-                gameStage.show(); } else if (!Spellchecker.SpellCheck(passwordField.getText(), (String) comboBox.getValue())) {
+                stage.setScene(mainGame(stage, passwordField.getText(), numberOfPlayers.getValue()));
+                stage.setMaximized(true);
+                stage.show(); } else if (!Spellchecker.SpellCheck(passwordField.getText(), (String) comboBox.getValue())) {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setContentText("Word invalid. Please check your spelling");
                     alert.show();

@@ -97,6 +97,8 @@ public class Game {
         });
 
 
+
+
         StackPane root = new StackPane();
         root.getChildren().add(row);
         root.getChildren().add(row1);

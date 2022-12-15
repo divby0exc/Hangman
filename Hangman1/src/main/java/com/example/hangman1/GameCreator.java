@@ -2,6 +2,7 @@ package com.example.hangman1;
 
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Color;
 
@@ -17,6 +18,10 @@ public class GameCreator {
         scrollPane.fitToWidthProperty().set(true);
         scrollPane.setContent(flowPane);
         Scene scene = new Scene(scrollPane, 550, 200, Color.BEIGE);
+
+
+
+
         return scene;
     }
 

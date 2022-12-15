@@ -10,7 +10,7 @@ import static com.example.hangman1.MainHangmanGame.english;
 import static com.example.hangman1.MainHangmanGame.swedish;
 
 public class Spellchecker {
-    public static boolean SpellCheck(String word) {
+    public static boolean SpellCheck(String word, String language) {
 
         File swedishDictionary = new File("src/main/resources/swedish-dictionary.txt");
         File englishDictionary = new File("src/main/resources/english-dictionary.txt");

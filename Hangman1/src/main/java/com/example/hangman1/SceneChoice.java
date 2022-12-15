@@ -84,6 +84,8 @@ public class SceneChoice {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Please enter the secret word first!");
                 alert.show();
+
+
             } else {
                 gameStage.setScene(mainGame(stage, passwordField.getText(), numberOfPlayers.getValue()));
                 gameStage.setMaximized(true);

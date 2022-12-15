@@ -1,11 +1,10 @@
 package model;
 
+import builder.UserBuilder;
+
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class UserSecret implements IModel<User> {
 
@@ -53,6 +52,18 @@ public class UserSecret implements IModel<User> {
     @Override
     public void clearSecrets() {
         userSecretList.clear();
+    }
+
+
+    public static void main(String[] args) throws UnknownHostException {
+        UserBuilder builder = new UserBuilder();
+        builder.name("foo");
+
+        User user = new UserBuilder()
+                .name("foo")
+                .myWord("secret")
+                .address()
+                .userWinner().build();
     }
 
 }

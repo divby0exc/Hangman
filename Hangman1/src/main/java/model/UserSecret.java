@@ -5,22 +5,21 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 public class UserSecret implements IModel<User> {
 
 
-    private static UserSecret instance;
-    private User user = new User();
-    private static HashMap<InetAddress, String> userSecretHashMap = new HashMap<>(4);
+    private Player player;
+    private List<String> userSecretList = new ArrayList<>(4);
 
 
-    private UserSecret() throws UnknownHostException {
-        user.setSecretWord("test");
-        userSecretHashMap.put(user.getAddress(), user.getSecretWord());
+    private UserSecret()  {
+
     }
 
     @Override
-    public HashMap<InetAddress, String> getAll() {
+    public List<String> getAll() {
         return null;
     }
 
@@ -35,13 +34,25 @@ public class UserSecret implements IModel<User> {
     }
 
     @Override
-    public String addSecret() {
+    public String randomSecret() {
+        Random r = new Random(userSecretList.size());
+        String random = userSecretList.get(r.nextInt());
+        if (random != player.getMyWord()) {
+            player.setMyWord(random);
+        }
         return null;
     }
 
-    public static void main(String[] args) throws UnknownHostException {
-
+    @Override
+    public String addSecret() {
+        String secret = player.myWord;
+        userSecretList.add(secret);
+        return null;
     }
 
+    @Override
+    public void clearSecrets() {
+        userSecretList.clear();
+    }
 
 }

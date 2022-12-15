@@ -21,7 +21,7 @@ public class HangmanClient implements Runnable {
         // establish a connection
         try {
 
-            client = new Socket("127.0.0.1", 5000);
+            client = new Socket("127.0.0.1", 8081);
             System.out.println("Connected");
 
             out = new DataOutputStream(client.getOutputStream());
@@ -59,9 +59,7 @@ public class HangmanClient implements Runnable {
 
     public static void main(String[] args) throws IOException {
         HangmanClient hangmanClient = new HangmanClient("127.0.0.1", 5000);
-        MainHangmanGame mainHangmanGame = new MainHangmanGame();
         hangmanClient.run();
-        mainHangmanGame.run();
 
     }
 }

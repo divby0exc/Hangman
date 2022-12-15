@@ -1,18 +1,19 @@
 package model;
 
 import java.net.InetAddress;
-import java.util.HashMap;
+import java.util.List;
 
 public interface IModel<User> {
 
 
-    HashMap<InetAddress, String> getAll();
+    List<String> getAll();
 
     InetAddress getAddress();
     String getSecret();
+
+    String randomSecret();
+
     String addSecret();
 
-
-
-
+    void clearSecrets();
 }

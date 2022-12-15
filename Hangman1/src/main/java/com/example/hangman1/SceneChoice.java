@@ -1,10 +1,19 @@
 
 package com.example.hangman1;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
+import javafx.collections.ObservableList;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+
+import javax.security.auth.callback.LanguageCallback;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SceneChoice {
 
@@ -47,6 +56,25 @@ public class SceneChoice {
         PasswordField passwordField = new PasswordField();
         Label lblNumberOfPlayers = new Label("Number Of Players:");
 
+
+
+
+        Label lblLanguage = new Label("Select Language");
+
+        ObservableList<String> languages = FXCollections.observableArrayList("Swedish", "English");
+
+        Spinner<String> spinner = new Spinner<String>();
+
+        SpinnerValueFactory<String> valueFactory = new SpinnerValueFactory.ListSpinnerValueFactory<String>(languages);
+
+        valueFactory.setValue("Swedish");
+        spinner.setValueFactory(valueFactory);
+
+
+
+
+
+
         Spinner<Integer> numberOfPlayers = new Spinner<>();
         // min, max, initialValue
         numberOfPlayers.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 6, 1));
@@ -63,7 +91,7 @@ public class SceneChoice {
 
             }
         });
-        HBox pane = new HBox(playGame, lblSecretWord, passwordField, lblNumberOfPlayers, numberOfPlayers);
+        HBox pane = new HBox(playGame, lblLanguage, spinner, lblSecretWord, passwordField, lblNumberOfPlayers, numberOfPlayers);
         pane.setSpacing(5); // 5 pixels space between elements in the hbox
         return pane;
     }

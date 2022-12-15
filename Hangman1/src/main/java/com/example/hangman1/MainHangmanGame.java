@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class MainHangmanGame extends Thread {
+public class MainHangmanGame implements Runnable {
 
 
     String secretWordInDash;
@@ -272,4 +272,8 @@ public class MainHangmanGame extends Thread {
     }
 
 
+    @Override
+    public void run() {
+
+    }
 }

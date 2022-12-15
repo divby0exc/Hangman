@@ -62,7 +62,7 @@ public class HangmanServer implements Runnable {
     }
 
     public static void main(String args[]) throws IOException {
-        HangmanServer hangmanServer = new HangmanServer(6666);
+        HangmanServer hangmanServer = new HangmanServer(5000);
         hangmanServer.run();
         //ServerSocket serverSocket = new ServerSocket(6666);
     }

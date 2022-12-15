@@ -6,6 +6,7 @@ import java.io.*;
 
 import com.example.hangman1.Application;
 import com.example.hangman1.IHangman;
+import com.example.hangman1.Keyboard;
 import com.example.hangman1.VirtualKeyboard;
 
 public class HangmanClient implements Runnable {
@@ -16,8 +17,7 @@ public class HangmanClient implements Runnable {
     private DataOutputStream out;
 
 
-
-    public HangmanClient(String address, int port) {
+    public HangmanClient(String address, int port) throws IOException {
 
         // establish a connection
         try {
@@ -28,38 +28,38 @@ public class HangmanClient implements Runnable {
             out = new DataOutputStream(client.getOutputStream());
             in = new DataInputStream(client.getInputStream());
             // sends output to the socket
-            Application.launch();
+            Keyboard keyboard = new Keyboard();
+            String line = keyboard.toString();
 
-            in.read("test".getBytes());
-        } catch(UnknownHostException u) {
-            System.out.println(u);
+            while ((line = String.valueOf(in.readChar())) != null) {
+                if (line.equals("0")) {
+                    System.out.println("good bye");
+                    break;
+                }
+                System.out.println(line);
 
-        } catch(IOException i) {
-            System.out.println(i);
-        }
-
-
-
-
-        // close the connection
-        try {
-            in.close();
-            out.close();
-            client.close();
-        }
-        catch(IOException i) {
-            System.out.println(i);
+                // close the connection
+                try {
+                    in.close();
+                    out.close();
+                    client.close();
+                } catch (IOException i) {
+                    System.out.println(i);
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
+
 
     @Override
     public void run() {
 
     }
 
-    public static void main(String[] args) {
-        HangmanClient hangmanClient = new HangmanClient("127.0.0.1", 6666);
+    public static void main(String[] args) throws IOException {
+        HangmanClient hangmanClient = new HangmanClient("127.0.0.1", 5000);
         hangmanClient.run();
     }
 }
-

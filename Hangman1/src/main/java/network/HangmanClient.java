@@ -61,7 +61,7 @@ public class HangmanClient implements Runnable {
         HangmanClient hangmanClient = new HangmanClient("127.0.0.1", 5000);
         MainHangmanGame mainHangmanGame = new MainHangmanGame();
         hangmanClient.run();
-        mainHangmanGame.startGame();
+        mainHangmanGame.run();
 
     }
 }

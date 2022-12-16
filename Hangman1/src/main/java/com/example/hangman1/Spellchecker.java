@@ -10,8 +10,8 @@ import java.util.Scanner;
 public class Spellchecker {
     public static boolean SpellCheck(String word, String language) {
 
-        File swedishDictionary = new File("src/main/resources/swedish-dictionary.txt");
-        File englishDictionary = new File("src/main/resources/english-dictionary.txt");
+        File swedishDictionary = new File("swedish-dictionary.txt");
+        File englishDictionary = new File("english-dictionary.txt");
 
 
 

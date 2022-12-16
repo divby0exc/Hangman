@@ -19,8 +19,14 @@ import java.util.List;
 import static com.example.hangman1.SceneChoice.backToMenu;
 
 public class Game {
+    public Game(){}
     String secretWordInDash;
-    int wrongAttempt = 0;
+    static int wrongAttempt = 0;
+
+    public static int getWrongAttempt() {
+        return wrongAttempt;
+    }
+
     char[] secretWordArray;
     final String dash = "-";
     ;
@@ -46,15 +52,8 @@ public class Game {
     private int state = MODE_WORD;
 
     int maxChances = 8;
-    Image firstMiss = new Image("1.png");
-    Image secondMiss = new Image("2.png");
-    Image thirdMiss = new Image("3.png");
-    Image fourthMiss = new Image("4.png");
-    Image fifthMiss = new Image("5.png");
-    Image sixthMiss = new Image("6.png");
-    Image seventhMiss = new Image("7.png");
-    Image eighthMiss = new Image("8.png");
-    ImageView imageView = new ImageView();
+
+
     public Game(String secretWord) {
         this.secretWord = secretWord.toUpperCase();
     }
@@ -109,9 +108,9 @@ public class Game {
         HBox inputplayer = new HBox(inputCh, enterACharacter, submitCharacter);
         HBox messageOfInputHB= new HBox(messageOfInput);
         messageOfInputHB.setPadding(new Insets(0, 10, 10, 10));
-        HBox hangmanDrawing = new HBox(imageView);
-        imageView.setFitHeight(150);
-        imageView.setFitWidth(150);
+        HBox hangmanDrawing = new HBox(HangmanImage.getImageView());
+        HangmanImage.getImageView().setFitHeight(150);
+        HangmanImage.getImageView().setFitWidth(150);
         Image img = new Image("background-prison-cell.jpg");
         BackgroundImage bgi = new BackgroundImage(img, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         Background bg = new Background(bgi);
@@ -242,47 +241,15 @@ public class Game {
             }
 
             if (wrongAttempt >= maxChances) {
-                getImage();
+                HangmanImage.getImage();
                 messageOfInput.setText("Sorry! You did not win. The correct word is: " + secretWord);
                 wrongAttempt = 0;
                 return;
             }
         }
-        getImage();
+        HangmanImage.getImage();
     }
 
-    //get image of hangman drawing
-    public void getImage() {
-        switch (wrongAttempt) {
-            case 0:
-                break;
-            case 1:
-                imageView.setImage(firstMiss);
-                break;
-            case 2:
-                imageView.setImage(secondMiss);
-                break;
-            case 3:
-                imageView.setImage(thirdMiss);
-                break;
-            case 4:
-                imageView.setImage(fourthMiss);
-                break;
-            case 5:
-                imageView.setImage(fifthMiss);
-                break;
-            case 6:
-                imageView.setImage(sixthMiss);
-                break;
-            case 7:
-                imageView.setImage(seventhMiss);
-                break;
-            case 8:
-                imageView.setImage(eighthMiss);
-                // hasLost = true;
-                break;
 
-        }
-    }
 }
 

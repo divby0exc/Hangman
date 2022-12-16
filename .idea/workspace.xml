@@ -5,20 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ec756e5-61ce-433f-b10f-d8f0bd9e5616" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/Spellchecker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/VirtualKeyboard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/testApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman1/src/main/java/network/HangmanServer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman1/src/main/java/words/GenerateWord.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman1/src/main/resources/english-dictionary.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman1/src/main/resources/gallow_full.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman1/src/main/resources/gallowrope.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman1/src/main/resources/swedish-dictionary.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hangman1/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/HangmanLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/HangmanLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/MainHangmanGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/MainHangmanGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/SceneChoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/SceneChoice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/Spellchecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/Spellchecker.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,10 +48,17 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/leila/Hangman&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -153,7 +150,24 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670448207737</updated>
+      <workItem from="1671027932203" duration="1702000" />
+      <workItem from="1671114074681" duration="1542000" />
+      <workItem from="1671190884269" duration="1638000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

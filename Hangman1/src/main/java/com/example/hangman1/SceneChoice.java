@@ -81,15 +81,15 @@ public class SceneChoice {
 
             } else {
 
-                if (Spellchecker.SpellCheck(passwordField.getText(), (String) comboBox.getValue())) {
+                // if (Spellchecker.SpellCheck(passwordField.getText(), (String) comboBox.getValue())) {
                 stage.setScene(mainGame(stage, passwordField.getText(), numberOfPlayers.getValue()));
                 stage.setMaximized(true);
-                stage.show(); } else if (!Spellchecker.SpellCheck(passwordField.getText(), (String) comboBox.getValue())) {
+                stage.show(); /*} else if (!Spellchecker.SpellCheck(passwordField.getText(), (String) comboBox.getValue())) {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setContentText("Word invalid. Please check your spelling");
                     alert.show();
 
-                }
+                }*/
 
             }
         });

@@ -6,10 +6,12 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import javax.security.auth.callback.LanguageCallback;
@@ -31,9 +33,16 @@ public class SceneChoice {
     static HBox backToMenu;
 
     public javafx.scene.Scene mainGame(Stage stage, String secretWord, int numberOfPlayers) {
+        FlowPane flowPane = new FlowPane();
+        for (int i = 0; i < numberOfPlayers; i++) {
+            flowPane.getChildren().add(new Game(secretWord).startGame());
+        }
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.fitToWidthProperty().set(true);
+        scrollPane.setContent(flowPane);
+        Scene scene = new Scene(scrollPane, 550, 200, Color.BEIGE);
 
-        return GameCreator.createGames(secretWord, numberOfPlayers);
-
+        return scene;
     }
 
     public javafx.scene.Scene gameMenu(Stage stage) {

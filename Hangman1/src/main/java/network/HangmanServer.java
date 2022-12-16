@@ -5,65 +5,60 @@ package network;
 import java.net.*;
 import java.io.*;
 
-public class HangmanServer implements Runnable {
+public class HangmanServer {
 
 
-    public ServerSocket serverSocket = null;
+    private ServerSocket serverSocket = null;
     private DataInputStream in = null;
 
 
-    public HangmanServer(int port)
-    {
+    public HangmanServer(ServerSocket serverSocket) {
+        this.serverSocket = serverSocket;
+    }
+
+
+    public void StartServer() {
         try {
-            //Listener.
-            serverSocket = new ServerSocket(port);
-            System.out.println("Server started");
 
-            System.out.println("Waiting for a client ...");
+            while (!serverSocket.isClosed()) {
 
-            Socket client = serverSocket.accept();
-            System.out.println("Client accepted");
+                System.out.println("Server started, waiting for client...");
+                //Listener.
+                Socket client = serverSocket.accept();
+                System.out.println("Client accepted");
 
-            // client socket input
-            in = new DataInputStream(
-                    new BufferedInputStream(client.getInputStream()));
+                ClientHandler clientHandler = new ClientHandler(client);
 
-            String line = "";
+                Thread thread = new Thread(clientHandler);
+                thread.start();
 
-            // Exit code 0.
-            while (!line.equals("0"))
-            {
-                try
-                {
-                    line = in.readUTF();
-                    System.out.println(line);
 
-                }
-                catch(IOException i)
-                {
-                    System.out.println(i);
-                }
+                // client socket input
+                in = new DataInputStream(
+                        new BufferedInputStream(client.getInputStream()));
             }
-            System.out.println("Closing connection");
 
-            // close connection
-            client.close();
-            in.close();
-        }
-        catch(IOException i)
-        {
+        } catch (IOException i) {
             System.out.println(i);
         }
     }
 
-    @Override
-    public void run() {
 
+    public void closeServerSocket() {
+        try {
+            if (serverSocket != null) {
+                serverSocket.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String args[]) throws IOException {
-        HangmanServer hangmanServer = new HangmanServer(5000);
-        hangmanServer.run();
+        ServerSocket ss = new ServerSocket(1234);
+        HangmanServer hangmanServer = new HangmanServer(ss);
+        hangmanServer.StartServer();
+
 
     }
 

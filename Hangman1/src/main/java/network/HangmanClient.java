@@ -3,30 +3,31 @@ package network;
 
 import java.net.*;
 import java.io.*;
-import com.example.hangman1.HangmanLogic;
-import javafx.application.Application;
+import java.util.Scanner;
 
 
-public class HangmanClient implements Runnable {
+public class HangmanClient {
 
 
-    Socket client;
-    private DataInputStream in;
-    private DataOutputStream out;
+
+    private Socket client;
+    private BufferedReader bufferedReader;
+    private BufferedWriter bufferedWriter;
+    private String name;
 
 
-    public HangmanClient(String address, int port) throws IOException {
+
+    public HangmanClient(Socket client, String name) {
 
         // establish a connection
         try {
+            this.client = client;
+            this.bufferedWriter = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
+            this.bufferedReader = new BufferedReader(new InputStreamReader(client.getInputStream()));
+            this.name = name;
 
-            client = new Socket("127.0.0.1", 8081);
-            System.out.println("Connected");
 
-            out = new DataOutputStream(client.getOutputStream());
-            in = new DataInputStream(client.getInputStream());
-            // sends output to the socket
-            HangmanLogic hangmanLogic = new HangmanLogic();
+            /*HangmanLogic hangmanLogic = new HangmanLogic();
             hangmanLogic.run();
                 // close the connection
                 try {
@@ -35,22 +36,78 @@ public class HangmanClient implements Runnable {
                     client.close();
                 } catch (IOException i) {
                     System.out.println(i);
-                }
+                }*/
 
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            closeClient(client, bufferedReader, bufferedWriter);
         }
     }
 
+    public void submitGuess() throws IOException {
+        try {
+            bufferedWriter.write(name);
+            bufferedWriter.newLine();
+            bufferedWriter.flush();
 
-    @Override
-    public void run() {
-
+            Scanner sc = new Scanner(System.in);
+            while(client.isConnected()) {
+                String newGuess = sc.next();
+                bufferedWriter.write(name + " guessed: " + newGuess);
+                bufferedWriter.newLine();
+                bufferedWriter.flush();
+            }
+        } catch (IOException e) {
+            closeClient(client, bufferedReader, bufferedWriter);
+        }
     }
 
+    public void guessListener() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String listenForGuesses;
+
+                while(client.isConnected()) {
+                    try {
+                        listenForGuesses = bufferedReader.readLine();
+                    } catch(IOException e) {
+                        closeClient(client, bufferedReader, bufferedWriter);
+                    }
+                }
+            }
+        }).start();
+    }
+
+    public void closeClient(Socket client, BufferedReader bufferedReader, BufferedWriter bufferedWriter) {
+        try {
+            if (bufferedReader != null) {
+                bufferedReader.close();
+            }
+
+            if (bufferedWriter != null) {
+                bufferedWriter.close();
+            }
+
+            if (client != null) {
+                client.close();
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     public static void main(String[] args) throws IOException {
-        HangmanClient hangmanClient = new HangmanClient("127.0.0.1", 5000);
-        hangmanClient.run();
+        /*HangmanClient hangmanClient = new HangmanClient("127.0.0.1", 5000);
+        hangmanClient.run();*/
+        Socket socket = new Socket("localhost", 1234);
 
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Guess something: ");
+        String name = sc.nextLine();
+        HangmanClient hangmanClient = new HangmanClient(socket, name);
+        hangmanClient.guessListener();
+        hangmanClient.submitGuess();
     }
+
+
 }

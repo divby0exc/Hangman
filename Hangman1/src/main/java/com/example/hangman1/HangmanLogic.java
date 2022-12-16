@@ -7,6 +7,8 @@ import java.nio.file.Path;
 import java.util.*;
 
 public class HangmanLogic extends Thread {
+
+
     public void run() {
         Scanner scanner = new Scanner(System.in);
         boolean userWon = false;

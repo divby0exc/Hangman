@@ -3,8 +3,7 @@ package network;
 
 import java.net.*;
 import java.io.*;
-import com.example.hangman1.Keyboard;
-import com.example.hangman1.MainHangmanGame;
+import com.example.hangman1.HangmanLogic;
 import javafx.application.Application;
 
 
@@ -27,16 +26,8 @@ public class HangmanClient implements Runnable {
             out = new DataOutputStream(client.getOutputStream());
             in = new DataInputStream(client.getInputStream());
             // sends output to the socket
-
-            String line;
-
-            while ((line = String.valueOf(in.readChar())) != null) {
-                if (line.equals("0")) {
-                    System.out.println("good bye");
-                    break;
-                }
-                System.out.println(line);
-
+            HangmanLogic hangmanLogic = new HangmanLogic();
+            hangmanLogic.run();
                 // close the connection
                 try {
                     in.close();
@@ -45,7 +36,7 @@ public class HangmanClient implements Runnable {
                 } catch (IOException i) {
                     System.out.println(i);
                 }
-            }
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

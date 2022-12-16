@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ec756e5-61ce-433f-b10f-d8f0bd9e5616" name="Changes" comment="Server client pojo">
-      <change afterPath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/Game.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/GameCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/CreateGame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/network/HangmanClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/network/HangmanClient.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,8 +134,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.HangmanClient" />
         <item itemvalue="Application.HangmanServer" />
+        <item itemvalue="Application.HangmanClient" />
         <item itemvalue="Application.HangmanLogic" />
         <item itemvalue="Application.Application" />
         <item itemvalue="Application.VirtualKeyboard" />
@@ -191,7 +193,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671217513567</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Server client pojo">
+      <created>1671218368517</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1671218368517</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

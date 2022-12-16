@@ -6,7 +6,8 @@ import java.io.*;
 import java.util.Scanner;
 
 
-import model.User;
+import com.example.hangman1.GameCreator;
+import model.Player;
 
 public class HangmanClient {
 
@@ -106,8 +107,10 @@ public class HangmanClient {
         Scanner sc = new Scanner(System.in);
         System.out.println("Guess something: ");
         String guess = sc.nextLine();
+        GameCreator gameCreator = new GameCreator();
+
         HangmanClient hangmanClient = new HangmanClient(socket, guess);
-        System.out.println(user);
+
         hangmanClient.secretWord();
         hangmanClient.submitGuess();
     }

@@ -6,6 +6,8 @@ import java.io.*;
 import java.util.Scanner;
 
 
+import model.User;
+
 public class HangmanClient {
 
 
@@ -14,6 +16,7 @@ public class HangmanClient {
     private BufferedReader bufferedReader;
     private BufferedWriter bufferedWriter;
     private String name;
+    private String myWord;
 
 
 
@@ -24,7 +27,7 @@ public class HangmanClient {
             this.client = client;
             this.bufferedWriter = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
             this.bufferedReader = new BufferedReader(new InputStreamReader(client.getInputStream()));
-            this.name = name;
+            this.name = String.valueOf(new Player(name, myWord));
 
 
             /*HangmanLogic hangmanLogic = new HangmanLogic();
@@ -61,15 +64,14 @@ public class HangmanClient {
         }
     }
 
-    public void guessListener() {
+    public void secretWord() {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                String listenForGuesses;
 
                 while(client.isConnected()) {
                     try {
-                        listenForGuesses = bufferedReader.readLine();
+                        myWord = bufferedReader.readLine();
                     } catch(IOException e) {
                         closeClient(client, bufferedReader, bufferedWriter);
                     }
@@ -103,9 +105,10 @@ public class HangmanClient {
 
         Scanner sc = new Scanner(System.in);
         System.out.println("Guess something: ");
-        String name = sc.nextLine();
-        HangmanClient hangmanClient = new HangmanClient(socket, name);
-        hangmanClient.guessListener();
+        String guess = sc.nextLine();
+        HangmanClient hangmanClient = new HangmanClient(socket, guess);
+        System.out.println(user);
+        hangmanClient.secretWord();
         hangmanClient.submitGuess();
     }
 

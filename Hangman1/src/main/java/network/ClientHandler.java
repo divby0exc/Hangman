@@ -2,6 +2,7 @@ package network;
 
 import java.io.*;
 import java.net.Socket;
+import model.Player;
 import java.util.ArrayList;
 
 public class ClientHandler implements Runnable {

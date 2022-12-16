@@ -5,20 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ec756e5-61ce-433f-b10f-d8f0bd9e5616" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/Spellchecker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/VirtualKeyboard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/testApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman1/src/main/java/network/HangmanServer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman1/src/main/java/words/GenerateWord.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman1/src/main/resources/english-dictionary.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman1/src/main/resources/gallow_full.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman1/src/main/resources/gallowrope.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman1/src/main/resources/swedish-dictionary.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hangman1/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/HangmanLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/HangmanLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/MainHangmanGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/MainHangmanGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/SceneChoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/SceneChoice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/Spellchecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/Spellchecker.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,16 +41,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/leila/Hangman&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/leila/Hangmantest",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\leila\Hangman\Hangman1\src\main\resources" />

@@ -24,7 +24,7 @@ public class Spellchecker {
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
-        
+
 
         boolean isFound = false;
 

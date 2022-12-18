@@ -6,10 +6,12 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import javax.security.auth.callback.LanguageCallback;
@@ -29,11 +31,20 @@ public class SceneChoice {
     private boolean gameStarted = false;
     private String guessTheWord = null;
     static HBox backToMenu;
+    Game game= new Game();
 
-    public javafx.scene.Scene mainGame(Stage stage, String secretWord, int numberOfPlayers) {
 
-        return GameCreator.createGames(secretWord, numberOfPlayers);
 
+    public javafx.scene.Scene mainGame(Stage stage, int numberOfPlayers) {
+        FlowPane flowPane = new FlowPane();
+        for (int i = 0; i < numberOfPlayers; i++) {
+            flowPane.getChildren().add(new Game().startGame());
+        }
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.fitToWidthProperty().set(true);
+        scrollPane.setContent(flowPane);
+        Scene scene = new Scene(scrollPane, 550, 200, Color.BEIGE);
+        return scene;
     }
 
     public javafx.scene.Scene gameMenu(Stage stage) {
@@ -53,47 +64,13 @@ public class SceneChoice {
 
     private Pane createPlayGamePane(Stage stage){
         Button playGame = new Button("Start game!");
-        Label lblSecretWord = new Label("Secret Word:");
-        PasswordField passwordField = new PasswordField();
-        Label lblNumberOfPlayers = new Label("Number Of Players:");
-
-
-        Label lblLanguage = new Label("Select Language");
-
-        String languages[] = {"Swedish", "English"};
-
-        ComboBox comboBox = new ComboBox(FXCollections.observableArrayList(languages));
-
-        comboBox.setValue("Swedish");
-
-
-
-
         Spinner<Integer> numberOfPlayers = new Spinner<>();
         // min, max, initialValue
         numberOfPlayers.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 6, 1));
+        playGame.setOnAction(e -> stage.setScene(mainGame(stage, numberOfPlayers.getValue())));
+        Label lblNumberOfPlayers = new Label("Number Of Players:");
 
-        playGame.setOnAction(e -> {
-            if ("".equals(passwordField.getText())){
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Please enter the secret word first!");
-                alert.show();
-
-            } else {
-
-                if (Spellchecker.SpellCheck(passwordField.getText(), (String) comboBox.getValue())) {
-                stage.setScene(mainGame(stage, passwordField.getText(), numberOfPlayers.getValue()));
-                stage.setMaximized(true);
-                stage.show(); } else if (!Spellchecker.SpellCheck(passwordField.getText(), (String) comboBox.getValue())) {
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setContentText("Word invalid. Please check your spelling");
-                    alert.show();
-
-                }
-
-            }
-        });
-        HBox pane = new HBox(playGame, lblLanguage, comboBox, lblSecretWord, passwordField, lblNumberOfPlayers, numberOfPlayers);
+        HBox pane = new HBox(playGame, lblNumberOfPlayers, numberOfPlayers);
         pane.setSpacing(5); // 5 pixels space between elements in the hbox
         return pane;
     }

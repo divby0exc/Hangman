@@ -1,19 +1,16 @@
 package com.example.hangman1;
 
-
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Scanner;
 
-
-public class Spellchecker {
+public class SpellChecker {
     public static boolean SpellCheck(String word, String language) {
 
-        URL urlSE = Spellchecker.class.getClassLoader().getResource("swedish-dictionary.txt");
-        URL urlEN = Spellchecker.class.getClassLoader().getResource("english-dictionary.txt");
+        URL urlSE = SpellChecker.class.getClassLoader().getResource("swedish-dictionary.txt");
+        URL urlEN = SpellChecker.class.getClassLoader().getResource("english-dictionary.txt");
 
         File swedishDictionary ;
         File englishDictionary ;
@@ -27,7 +24,6 @@ public class Spellchecker {
 
 
         boolean isFound = false;
-
 
         if(language.equalsIgnoreCase("Swedish")) {
             try {

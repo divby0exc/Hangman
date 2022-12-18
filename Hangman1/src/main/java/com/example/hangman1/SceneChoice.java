@@ -53,6 +53,8 @@ public class SceneChoice {
 
     private Pane createPlayGamePane(Stage stage){
         Button playGame = new Button("Start game!");
+        Label lblName = new Label("Name");
+        TextField name = new TextField();
         Label lblSecretWord = new Label("Secret Word:");
         PasswordField passwordField = new PasswordField();
         Label lblNumberOfPlayers = new Label("Number Of Players:");
@@ -65,8 +67,6 @@ public class SceneChoice {
         ComboBox comboBox = new ComboBox(FXCollections.observableArrayList(languages));
 
         comboBox.setValue("Swedish");
-
-
 
 
         Spinner<Integer> numberOfPlayers = new Spinner<>();

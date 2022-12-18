@@ -1,22 +1,20 @@
 package com.example.hangman1;
 
 
+import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
-import javafx.scene.text.TextAlignment;
+
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.EventListener;
 import java.util.List;
-
-
-
 
 
 public class Game {
@@ -56,6 +54,8 @@ public class Game {
     Image seventhMiss = new Image("7.png");
     Image eighthMiss = new Image("8.png");
     ImageView imageView = new ImageView();
+
+
     public Game(String secretWord) {
         this.secretWord = secretWord.toUpperCase();
     }
@@ -90,7 +90,7 @@ public class Game {
         enterACharacter.setOnMouseClicked(mouseEvent -> {
             state = MODE_GUESS;
         });
-        submitCharacter = new Button("Submit");
+
         submitCharacter.setOnAction(actionEvent -> {
             input = (enterACharacter.getText().toUpperCase());
             submit();
@@ -122,8 +122,8 @@ public class Game {
         enterYourName = new TextField();
         submitYourName = new Button("Submit");
         submitYourName.setOnAction(actionEvent -> {
-            name=(enterYourName.getText());
-            showName.setText("Welcome to game " +name);
+            name = (enterYourName.getText());
+            showName.setText("Welcome to game " + name);
             enterYourName.setText("");
         });
         enterYourName.setOnMouseClicked(mouseEvent -> {
@@ -284,6 +284,7 @@ public class Game {
                 break;
 
         }
+
     }
 }
 

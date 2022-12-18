@@ -6,7 +6,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.*;
 
-public class UserSecret implements IModel<User> {
+public class UserSecret implements IModel<Player> {
 
 
     private Player player;
@@ -14,7 +14,7 @@ public class UserSecret implements IModel<User> {
 
 
     private UserSecret()  {
-
+        userSecretList.add(player.getMyWord());
     }
 
     @Override

@@ -6,45 +6,25 @@ import java.io.*;
 import java.util.Scanner;
 
 
-import com.example.hangman1.GameCreator;
 import model.Player;
 
 public class HangmanClient {
-
 
 
     private Socket client;
     private BufferedReader bufferedReader;
     private BufferedWriter bufferedWriter;
     private String name;
-    private String myWord;
+    private static String myWord;
 
 
-
-    public HangmanClient(Socket client, String name) {
-
+    public HangmanClient(Socket client, String name) throws IOException {
         // establish a connection
-        try {
-            this.client = client;
-            this.bufferedWriter = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
-            this.bufferedReader = new BufferedReader(new InputStreamReader(client.getInputStream()));
-            this.name = String.valueOf(new Player(name, myWord));
+        this.client = client;
+        this.bufferedWriter = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
+        this.bufferedReader = new BufferedReader(new InputStreamReader(client.getInputStream()));
+        this.name = String.valueOf(new Player(, ));
 
-
-            /*HangmanLogic hangmanLogic = new HangmanLogic();
-            hangmanLogic.run();
-                // close the connection
-                try {
-                    in.close();
-                    out.close();
-                    client.close();
-                } catch (IOException i) {
-                    System.out.println(i);
-                }*/
-
-        } catch (IOException e) {
-            closeClient(client, bufferedReader, bufferedWriter);
-        }
     }
 
     public void submitGuess() throws IOException {
@@ -55,6 +35,7 @@ public class HangmanClient {
 
             Scanner sc = new Scanner(System.in);
             while(client.isConnected()) {
+                System.out.println("Input guess: ");
                 String newGuess = sc.next();
                 bufferedWriter.write(name + " guessed: " + newGuess);
                 bufferedWriter.newLine();
@@ -65,7 +46,7 @@ public class HangmanClient {
         }
     }
 
-    public void secretWord() {
+    public void clientGame() {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -100,20 +81,14 @@ public class HangmanClient {
         }
     }
     public static void main(String[] args) throws IOException {
-        /*HangmanClient hangmanClient = new HangmanClient("127.0.0.1", 5000);
-        hangmanClient.run();*/
+
         Socket socket = new Socket("localhost", 1234);
+        HangmanClient hangmanClient = new HangmanClient(socket, myWord);
+        hangmanClient.submitGuess();
 
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Guess something: ");
-        String guess = sc.nextLine();
-        GameCreator gameCreator = new GameCreator();
-
-        HangmanClient hangmanClient = new HangmanClient(socket, guess);
-
-        hangmanClient.secretWord();
         hangmanClient.submitGuess();
     }
+
 
 
 }

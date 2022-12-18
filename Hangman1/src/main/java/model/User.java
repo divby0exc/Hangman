@@ -13,6 +13,7 @@ public class User implements Serializable {
     private boolean userWinner;
 
 
+
     public User() throws UnknownHostException {
         this.address = InetAddress.getLocalHost();
         this.userWinner = false;

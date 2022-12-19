@@ -14,8 +14,8 @@ public class Application extends javafx.application.Application {
 
         // Start
         Scene gameMenu = sceneChoice.gameMenu(stage);
-            stage.setScene(gameMenu);
-            stage.show();
+        stage.setScene(gameMenu);
+        stage.show();
     }
 
     public static void main(String[] args) {

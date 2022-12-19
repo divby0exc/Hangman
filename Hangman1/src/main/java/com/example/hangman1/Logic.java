@@ -1,14 +1,10 @@
 package com.example.hangman1;
 
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
-import model.*;
 
 public class Logic {
-
-    String name;
-    String secretWord;
+    String secretWord = "";
     int wrongAttempt = 0;
     char[] secretWordToArray;
     int maxChances = 8;
@@ -16,14 +12,6 @@ public class Logic {
     final String dash = "-";
     List<String> correctGuesses = new ArrayList<>();
     List<String> wrongGuesses = new ArrayList<>();
-    User user = new User();
-
-    public Logic() throws UnknownHostException {
-         this.name = user.getName();
-         this.secretWord = user.getSecretWord();
-
-    }
-
 
     public void setSecretWord(String secretWord) {
         this.secretWord = secretWord;
@@ -126,5 +114,6 @@ public class Logic {
     }
 
 }
+
 
 

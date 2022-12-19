@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ec756e5-61ce-433f-b10f-d8f0bd9e5616" name="Changes" comment="Server client pojo">
+    <list default="true" id="6ec756e5-61ce-433f-b10f-d8f0bd9e5616" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/HangmanLogic.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/model/Player.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/network/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/network/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/network/HangmanClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/network/HangmanClient.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,16 +42,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/paraply/IdeaProjects/Hangman/Hangman1/src/main/java/com/example/hangman1&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/paraply/IdeaProjects/Hangman/Hangman1/src/main/java/com/example/hangman1",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1" />
@@ -67,7 +70,7 @@
       <recent name="com.example.hangman1" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.UserSecret">
+  <component name="RunManager" selected="Application.Application">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.hangman1.Application" />
       <module name="Hangman" />
@@ -120,12 +123,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserSecret" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="model.UserSecret" />
+    <configuration name="VirtualKeyboard" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.hangman1.VirtualKeyboard" />
       <module name="Hangman" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="model.*" />
+          <option name="PATTERN" value="com.example.hangman1.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -134,19 +137,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.UserSecret" />
       <item itemvalue="Application.HangmanLogic" />
       <item itemvalue="Application.Application" />
       <item itemvalue="Application.HangmanClient" />
       <item itemvalue="Application.HangmanServer" />
+      <item itemvalue="Application.VirtualKeyboard" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.UserSecret" />
+        <item itemvalue="Application.Application" />
         <item itemvalue="Application.HangmanClient" />
         <item itemvalue="Application.HangmanServer" />
         <item itemvalue="Application.HangmanLogic" />
-        <item itemvalue="Application.Application" />
+        <item itemvalue="Application.VirtualKeyboard" />
       </list>
     </recent_temporary>
   </component>
@@ -158,6 +161,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670448207737</updated>
+      <workItem from="1671456974878" duration="1966000" />
     </task>
     <task id="LOCAL-00001" summary="Server client pojo">
       <created>1671105320199</created>
@@ -229,43 +233,11 @@
       <option name="project" value="LOCAL" />
       <updated>1671219201657</updated>
     </task>
-    <task id="LOCAL-00011" summary="Server client pojo">
-      <created>1671445677476</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1671445677476</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Server client pojo">
-      <created>1671451597607</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1671451597607</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Server client pojo">
-      <created>1671455010681</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1671455010681</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Server client pojo">
-      <created>1671455414296</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1671455414296</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Server client pojo">
-      <created>1671455823453</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1671455823453</updated>
-    </task>
-    <option name="localTasksCounter" value="16" />
+    <option name="localTasksCounter" value="11" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -281,6 +253,21 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Server client pojo" />
     <option name="LAST_COMMIT_MESSAGE" value="Server client pojo" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/Hangman1/src/main/java/model/Player.java</url>
+          <line>8</line>
+          <properties class="model.Player">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Hangman$network_in_Hangman.ic" NAME="network in Hangman Coverage Results" MODIFIED="1670932659216" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

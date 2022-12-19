@@ -3,7 +3,7 @@ package com.example.hangman1;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public  class HangmanDrawing {
+public class HangmanDrawing {
     Image firstMiss = new Image("1.png");
     Image secondMiss = new Image("2.png");
     Image thirdMiss = new Image("3.png");
@@ -14,6 +14,13 @@ public  class HangmanDrawing {
     Image eighthMiss = new Image("8.png");
     ImageView imageView = new ImageView();
 
+    public void hide() {
+        imageView.setVisible(false);
+    }
+
+    public void show() {
+        imageView.setVisible(true);
+    }
 
     public ImageView getImageOfHangman(int wrongAttempt) {
 

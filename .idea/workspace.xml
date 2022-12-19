@@ -134,6 +134,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.HangmanDrawing" />
+      <item itemvalue="Application.OwnWord" />
+      <item itemvalue="Application.HangmanLogic" />
+      <item itemvalue="Application.Application" />
+      <item itemvalue="Application.VirtualKeyboard" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Application" />

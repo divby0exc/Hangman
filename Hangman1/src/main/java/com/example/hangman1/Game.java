@@ -33,6 +33,15 @@ public class Game {
     private final static int MODE_GUESS = 2;
     private int mode = MODE_WORD;
     TextField textFieldOfKeyboardKeyPress;
+    PasswordField secretWordField;
+
+    public String getSecretWord() {
+        return secretWordField.getText();
+    }
+
+    public void ceuvh() {
+        String hello = getSecretWord();
+    }
 
     public Pane startGame() {
 
@@ -63,7 +72,7 @@ public class Game {
 
         //Get the secret word
         Label SecretWordLabel = new Label("Enter secret Word for the player:");
-        PasswordField secretWordField = new PasswordField();
+        secretWordField = new PasswordField();
         secretWordField.setOnMouseClicked(mouseEvent -> {
             textFieldOfKeyboardKeyPress = secretWordField;
             mode = MODE_WORD;
@@ -88,6 +97,7 @@ public class Game {
             }
         });
         HBox secretWordHbox = new HBox(SecretWordLabel, secretWordField, submitSecretWord);
+
 
 
         //Show secret word in the form of dash

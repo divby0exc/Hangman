@@ -6,14 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6ec756e5-61ce-433f-b10f-d8f0bd9e5616" name="Changes" comment="Server client pojo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/GameCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/GameCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/SceneChoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/SceneChoice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/model/IModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/model/IModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/model/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/builder/UserBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/builder/UserBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/model/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/model/UserSecret.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/model/UserSecret.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/network/HangmanClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/network/HangmanClient.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,16 +41,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/home/paraply/IdeaProjects/Hangman/Hangman1/src/main/java/com/example/hangman1",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/paraply/IdeaProjects/Hangman/Hangman1/src/main/java/com/example/hangman1&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1" />
@@ -68,7 +63,7 @@
       <recent name="com.example.hangman1" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.HangmanClient">
+  <component name="RunManager" selected="Application.UserSecret">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.hangman1.Application" />
       <module name="Hangman" />
@@ -121,12 +116,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VirtualKeyboard" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.hangman1.VirtualKeyboard" />
+    <configuration name="UserSecret" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="model.UserSecret" />
       <module name="Hangman" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.hangman1.*" />
+          <option name="PATTERN" value="model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -135,19 +130,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.UserSecret" />
       <item itemvalue="Application.HangmanLogic" />
       <item itemvalue="Application.Application" />
       <item itemvalue="Application.HangmanClient" />
       <item itemvalue="Application.HangmanServer" />
-      <item itemvalue="Application.VirtualKeyboard" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.UserSecret" />
         <item itemvalue="Application.HangmanClient" />
         <item itemvalue="Application.HangmanServer" />
         <item itemvalue="Application.HangmanLogic" />
         <item itemvalue="Application.Application" />
-        <item itemvalue="Application.VirtualKeyboard" />
       </list>
     </recent_temporary>
   </component>

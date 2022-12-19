@@ -6,15 +6,15 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.*;
 
-public class UserSecret implements IModel<Player> {
+public class UserSecret implements IModel<User> {
 
 
-    private Player player;
-    private List<String> userSecretList = new ArrayList<>(4);
-
+    private static User user;
+    private List<User> users = new ArrayList<>(4);
+    private List<String> userSecretList = new ArrayList<>();
 
     private UserSecret()  {
-        userSecretList.add(player.getMyWord());
+        users.add(new User(user.getName(), user.getSecretWord()));
     }
 
     @Override
@@ -29,23 +29,22 @@ public class UserSecret implements IModel<Player> {
 
     @Override
     public String getSecret() {
-        return null;
+        return user.getSecretWord();
     }
 
     @Override
     public String randomSecret() {
         Random r = new Random(userSecretList.size());
-        String random = userSecretList.get(r.nextInt());
-        if (random != player.getMyWord()) {
-            player.setMyWord(random);
+        String random = String.valueOf(users.get(r.nextInt()));
+        if (random != user.getSecretWord()) {
+            user.setSecretWord(random);
         }
         return null;
     }
 
     @Override
     public String addSecret() {
-        String secret = player.myWord;
-        userSecretList.add(secret);
+        userSecretList.add(user.getSecretWord());
         return null;
     }
 
@@ -56,14 +55,16 @@ public class UserSecret implements IModel<Player> {
 
 
     public static void main(String[] args) throws UnknownHostException {
-        UserBuilder builder = new UserBuilder();
-        builder.name("foo");
 
-        User user = new UserBuilder()
-                .name("foo")
-                .myWord("secret")
-                .address()
-                .userWinner().build();
+        Scanner sc = new Scanner(System.in);
+        user = new User();
+        System.out.println("Input name: ");
+        user.setName(sc.next());
+        System.out.println("Input secret: ");
+        user.setSecretWord(sc.next());
+        System.out.println(user.getName() + user.getSecretWord());
+
+
     }
 
 }

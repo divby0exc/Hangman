@@ -3,7 +3,7 @@ package model;
 import java.net.InetAddress;
 import java.util.List;
 
-public interface IModel<Player> {
+public interface IModel<User> {
 
 
     List<String> getAll();

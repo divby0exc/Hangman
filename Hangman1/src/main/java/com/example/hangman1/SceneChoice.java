@@ -15,6 +15,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import javax.security.auth.callback.LanguageCallback;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class SceneChoice {
 
 
 
-    public javafx.scene.Scene mainGame(Stage stage, int numberOfPlayers) {
+    public javafx.scene.Scene mainGame(Stage stage, int numberOfPlayers) throws UnknownHostException {
         FlowPane flowPane = new FlowPane();
         for (int i = 0; i < numberOfPlayers; i++) {
             flowPane.getChildren().add(new Game().startGame());
@@ -67,7 +68,13 @@ public class SceneChoice {
         Spinner<Integer> numberOfPlayers = new Spinner<>();
         // min, max, initialValue
         numberOfPlayers.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 6, 1));
-        playGame.setOnAction(e -> stage.setScene(mainGame(stage, numberOfPlayers.getValue())));
+        playGame.setOnAction(e -> {
+            try {
+                stage.setScene(mainGame(stage, numberOfPlayers.getValue()));
+            } catch (UnknownHostException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
         Label lblNumberOfPlayers = new Label("Number Of Players:");
 
         HBox pane = new HBox(playGame, lblNumberOfPlayers, numberOfPlayers);

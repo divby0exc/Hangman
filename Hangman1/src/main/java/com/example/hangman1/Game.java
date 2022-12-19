@@ -8,7 +8,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
+import model.User;
 
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,8 +45,8 @@ public class Game {
         String hello = getSecretWord();
     }
 
-    public Pane startGame() {
-
+    public Pane startGame() throws UnknownHostException {
+        User user = new User();
         // Register player name
         playerNameLabel = new Label("Enter the Name of player:");
         playerNameField = new TextField();
@@ -55,6 +57,7 @@ public class Game {
         submitPlayerName = new Button("submit player");
         submitPlayerName.setOnAction(actionEvent -> {
             playerName = (playerNameField.getText());
+            user.setName(playerName);
             playerNameField.setText("");
         });
         HBox enterPlayersName = new HBox(playerNameLabel, playerNameField, submitPlayerName);
@@ -75,7 +78,9 @@ public class Game {
         secretWordField = new PasswordField();
         secretWordField.setOnMouseClicked(mouseEvent -> {
             textFieldOfKeyboardKeyPress = secretWordField;
+            user.setSecretWord(secretWordField.getText());
             mode = MODE_WORD;
+
         });
         Button submitSecretWord = new Button("submit secret word");
         submitSecretWord.setOnAction(e -> {
@@ -92,7 +97,7 @@ public class Game {
                 logic = new Logic();
                 logic.setSecretWord(secretWord);
                 showSecretWordIndashFormat.setText(logic.getWordToDisplay());
-                guessACharacterLabel.setText("Welcome to the game " + " " + playerName + "!" + " Guess a letter:");
+                guessACharacterLabel.setText("Welcome to the game " + " " + user.getName() + "!" + " Guess a letter:");
                 hangmanDrawing.show();
             }
         });

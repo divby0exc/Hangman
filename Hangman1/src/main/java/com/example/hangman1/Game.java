@@ -11,6 +11,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
+import model.User;
+
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -60,8 +63,8 @@ public class Game {
     }
 
 
-    public Pane startGame() {
-
+    public Pane startGame() throws UnknownHostException {
+        User user = new User();
         // Creating a virtual keyboard
         List<String> letters = new ArrayList<>(Arrays.asList("Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"));
         List<String> letters1 = new ArrayList<>(Arrays.asList("A", "S", "D", "F", "G", "H", "J", "K", "L"));
@@ -122,7 +125,8 @@ public class Game {
         submitYourName = new Button("Submit");
         submitYourName.setOnAction(actionEvent -> {
             name=(enterYourName.getText());
-            showName.setText("Welcome to game " +name);
+            user.setName(name);
+            showName.setText("Welcome to game " + user.getName());
             enterYourName.setText("");
         });
         enterYourName.setOnMouseClicked(mouseEvent -> {

@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ec756e5-61ce-433f-b10f-d8f0bd9e5616" name="Changes" comment="Server client pojo" />
+    <list default="true" id="6ec756e5-61ce-433f-b10f-d8f0bd9e5616" name="Changes" comment="Server client pojo">
+      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/GameCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/GameCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/SceneChoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/SceneChoice.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -244,7 +248,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671455010681</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Server client pojo">
+      <created>1671455414296</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1671455414296</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

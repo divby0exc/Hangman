@@ -15,15 +15,15 @@ public class HangmanClient {
     private BufferedReader bufferedReader;
     private BufferedWriter bufferedWriter;
     private String name;
-    private static String myWord;
+    private String myWord;
 
 
-    public HangmanClient(Socket client, String name) throws IOException {
+    public HangmanClient(Socket client) throws IOException {
         // establish a connection
         this.client = client;
         this.bufferedWriter = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
         this.bufferedReader = new BufferedReader(new InputStreamReader(client.getInputStream()));
-        this.name = String.valueOf(new Player(, ));
+        this.name = name;
 
     }
 
@@ -83,7 +83,7 @@ public class HangmanClient {
     public static void main(String[] args) throws IOException {
 
         Socket socket = new Socket("localhost", 1234);
-        HangmanClient hangmanClient = new HangmanClient(socket, myWord);
+        HangmanClient hangmanClient = new HangmanClient(socket);
         hangmanClient.submitGuess();
 
         hangmanClient.submitGuess();

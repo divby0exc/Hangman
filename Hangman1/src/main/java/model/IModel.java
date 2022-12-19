@@ -9,11 +9,13 @@ public interface IModel<User> {
     List<String> getAll();
 
     InetAddress getAddress();
+
     String getSecret();
 
     String randomSecret();
 
-    String addSecret();
+    void addSecret();
 
     void clearSecrets();
+
 }

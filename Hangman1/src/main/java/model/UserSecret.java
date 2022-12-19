@@ -1,7 +1,5 @@
 package model;
 
-import builder.UserBuilder;
-
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.*;
@@ -9,12 +7,13 @@ import java.util.*;
 public class UserSecret implements IModel<User> {
 
 
-    private static User user;
+    User user = new User();
     private List<User> users = new ArrayList<>(4);
     private List<String> userSecretList = new ArrayList<>();
 
-    private UserSecret()  {
-        users.add(new User(user.getName(), user.getSecretWord()));
+    public UserSecret() throws UnknownHostException {
+        users.add(new User("foo", "bar"));
+        users.add(new User("bar", "foo"));
     }
 
     @Override
@@ -34,18 +33,17 @@ public class UserSecret implements IModel<User> {
 
     @Override
     public String randomSecret() {
-        Random r = new Random(userSecretList.size());
-        String random = String.valueOf(users.get(r.nextInt()));
-        if (random != user.getSecretWord()) {
-            user.setSecretWord(random);
+        Random r = new Random(users.size());
+        User randomUser = users.get(r.nextInt());
+        if (randomUser.getSecretWord() != user.getSecretWord()) {
+            user.setSecretWord(randomUser.getSecretWord());
         }
         return null;
     }
 
     @Override
-    public String addSecret() {
+    public void addSecret() {
         userSecretList.add(user.getSecretWord());
-        return null;
     }
 
     @Override
@@ -54,17 +52,5 @@ public class UserSecret implements IModel<User> {
     }
 
 
-    public static void main(String[] args) throws UnknownHostException {
-
-        Scanner sc = new Scanner(System.in);
-        user = new User();
-        System.out.println("Input name: ");
-        user.setName(sc.next());
-        System.out.println("Input secret: ");
-        user.setSecretWord(sc.next());
-        System.out.println(user.getName() + user.getSecretWord());
-
-
-    }
-
 }
+

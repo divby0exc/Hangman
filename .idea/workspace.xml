@@ -5,10 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ec756e5-61ce-433f-b10f-d8f0bd9e5616" name="Changes" comment="Server client pojo">
+      <change afterPath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/Logic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/builder/UserBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/builder/UserBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/com/example/hangman1/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/model/IModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/model/IModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/model/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/model/UserSecret.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/model/UserSecret.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hangman1/src/main/java/network/HangmanClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman1/src/main/java/network/HangmanClient.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,7 +229,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671219201657</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Server client pojo">
+      <created>1671445677476</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1671445677476</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

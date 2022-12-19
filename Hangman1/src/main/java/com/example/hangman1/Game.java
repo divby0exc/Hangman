@@ -61,7 +61,7 @@ public class Game {
         HBox spellcheckingOfWord = new HBox(lblLanguage, comboBox);
         spellcheckingOfWord.setPadding(new Insets(240, 10, 10, 10));
 
-        //Get the secret word
+        //Get the secret word and also check spelling of the word
         Label SecretWordLabel = new Label("Enter secret Word for the player:");
         PasswordField secretWordField = new PasswordField();
         secretWordField.setOnMouseClicked(mouseEvent -> {
@@ -96,7 +96,7 @@ public class Game {
         HBox secretWordInDash = new HBox(showSecretWordIndashFormat);
         secretWordInDash.setPadding(new Insets(10, 20, 10, 10));
 
-        // Get input of player and show the result
+        // Get input of player and check the input with secret word
         guessACharacterLabel = new Label("Guess a letter");
         guessACharacterField = new TextField();
         guessACharacterField.setOnMouseClicked(mouseEvent -> {
@@ -123,7 +123,7 @@ public class Game {
                     hangmanDrawing.getImageOfHangman(logic.getWrongAttempt());
                 }
                 case Logic.CODE_LOST -> {
-                    messageOfInput.setText("Sorry! You did not win. The correct word is: " + logic.getSecretWord());
+                    messageOfInput.setText("Sorry "+ playerName + "! you did not win. The correct word is: " + logic.getSecretWord());
                     hangmanDrawing.getImageOfHangman(logic.getWrongAttempt());
                 }
                 case Logic.CODE_WON -> {
@@ -137,6 +137,7 @@ public class Game {
         });
         HBox guessACharacter = new HBox(guessACharacterLabel, guessACharacterField, submitCharacter);
 
+        // Show the result of comparing input with secret word
         messageOfInput = new Label();
         messageOfInput.setFont(new Font("Arial", 14));
         messageOfInput.setMaxWidth(400);

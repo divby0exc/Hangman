@@ -6,9 +6,11 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Color;
 
+import java.net.UnknownHostException;
+
 public class GameCreator {
 
-    public static Scene createGames(String secretWord, int numberOfPlayers){
+    public static Scene createGames(String secretWord, int numberOfPlayers) throws UnknownHostException {
 
         FlowPane flowPane = new FlowPane();
         for (int i = 0; i < numberOfPlayers; i++) {

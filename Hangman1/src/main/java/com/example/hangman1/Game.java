@@ -1,22 +1,23 @@
 package com.example.hangman1;
 
 
+import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
-import javafx.scene.text.TextAlignment;
+import model.User;
+
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.EventListener;
 import java.util.List;
 
-
-import static com.example.hangman1.SceneChoice.backToMenu;
 
 public class Game {
     String secretWordInDash;
@@ -55,13 +56,15 @@ public class Game {
     Image seventhMiss = new Image("7.png");
     Image eighthMiss = new Image("8.png");
     ImageView imageView = new ImageView();
+
+
     public Game(String secretWord) {
         this.secretWord = secretWord.toUpperCase();
     }
 
 
-    public Pane startGame() {
-
+    public Pane startGame() throws UnknownHostException {
+        User user = new User();
         // Creating a virtual keyboard
         List<String> letters = new ArrayList<>(Arrays.asList("Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"));
         List<String> letters1 = new ArrayList<>(Arrays.asList("A", "S", "D", "F", "G", "H", "J", "K", "L"));
@@ -89,13 +92,12 @@ public class Game {
         enterACharacter.setOnMouseClicked(mouseEvent -> {
             state = MODE_GUESS;
         });
-        submitCharacter = new Button("Submit");
+
         submitCharacter.setOnAction(actionEvent -> {
             input = (enterACharacter.getText().toUpperCase());
             submit();
             enterACharacter.setText("");
         });
-
 
 
 
@@ -121,8 +123,9 @@ public class Game {
         enterYourName = new TextField();
         submitYourName = new Button("Submit");
         submitYourName.setOnAction(actionEvent -> {
-            name=(enterYourName.getText());
-            showName.setText("Welcome to game " +name);
+            name = (enterYourName.getText());
+            showName.setText("Welcome to game " + name);
+            user.setName(name);
             enterYourName.setText("");
         });
         enterYourName.setOnMouseClicked(mouseEvent -> {
@@ -130,8 +133,8 @@ public class Game {
         });
 
 
-            HBox enterPlayerName= new HBox(enterName,enterYourName,submitYourName,showName);
-            enterPlayerName.setPadding(new Insets(150, 10, 10, 10));
+        HBox enterPlayerName= new HBox(enterName,enterYourName,submitYourName,showName);
+        enterPlayerName.setPadding(new Insets(150, 10, 10, 10));
 
         VBox vBox = new VBox(enterPlayerName,inputplayer,hBox1,messageOfInputHB, row, row1, row2,hangmanDrawing);
         vBox.setPadding(new Insets(20, 30, 20, 20));
@@ -283,6 +286,7 @@ public class Game {
                 break;
 
         }
+
     }
 }
 

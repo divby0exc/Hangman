@@ -5,9 +5,6 @@ import java.net.*;
 import java.io.*;
 import java.util.Scanner;
 
-
-import model.Player;
-
 public class HangmanClient {
 
 

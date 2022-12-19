@@ -15,6 +15,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import javax.security.auth.callback.LanguageCallback;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class SceneChoice {
     private String guessTheWord = null;
     static HBox backToMenu;
 
-    public javafx.scene.Scene mainGame(Stage stage, String secretWord, int numberOfPlayers) {
+    public javafx.scene.Scene mainGame(Stage stage, String secretWord, int numberOfPlayers) throws UnknownHostException {
         FlowPane flowPane = new FlowPane();
         for (int i = 0; i < numberOfPlayers; i++) {
             flowPane.getChildren().add(new Game(secretWord).startGame());
@@ -91,8 +92,12 @@ public class SceneChoice {
             } else {
 
                 if (Spellchecker.SpellCheck(passwordField.getText(), (String) comboBox.getValue())) {
-                stage.setScene(mainGame(stage, passwordField.getText(), numberOfPlayers.getValue()));
-                stage.setMaximized(true);
+                    try {
+                        stage.setScene(mainGame(stage, passwordField.getText(), numberOfPlayers.getValue()));
+                    } catch (UnknownHostException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    stage.setMaximized(true);
                 stage.show(); } else if (!Spellchecker.SpellCheck(passwordField.getText(), (String) comboBox.getValue())) {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setContentText("Word invalid. Please check your spelling");

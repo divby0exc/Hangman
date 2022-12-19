@@ -26,7 +26,7 @@ public class Game {
     int wrongAttempt = 0;
     char[] secretWordArray;
     final String dash = "-";
-    ;
+
     String secretWord = "";
     String alph;
     String input;

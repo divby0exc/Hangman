@@ -1,67 +1,77 @@
 package network;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
 
+public class HangmanServer extends Thread {
+  /*  private ServerSocket serverSocket;
 
-import java.net.*;
-import java.io.*;
-
-public class HangmanServer {
-
-
-    private ServerSocket serverSocket = null;
-    private DataInputStream in = null;
-
-
-    public HangmanServer(ServerSocket serverSocket) {
-        this.serverSocket = serverSocket;
+    public void start(int port) throws IOException {
+        serverSocket = new ServerSocket(port);
+        while (true)
+            new EchoClientHandler(serverSocket.accept()).start();
     }
 
-
-    public void StartServer() {
+    public void stop() {
         try {
-
-            while (!serverSocket.isClosed()) {
-
-                System.out.println("Server started, waiting for client...");
-                //Listener.
-                Socket client = serverSocket.accept();
-                System.out.println("Client accepted");
-
-                ClientHandler clientHandler = new ClientHandler(client);
-
-                Thread thread = new Thread(clientHandler);
-                thread.start();
-
-
-                // client socket input
-                in = new DataInputStream(
-                        new BufferedInputStream(client.getInputStream()));
-            }
-
-        } catch (IOException i) {
-            System.out.println(i);
-        }
-    }
-
-
-    public void closeServerSocket() {
-        try {
-            if (serverSocket != null) {
-                serverSocket.close();
-            }
+            serverSocket.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
-    public static void main(String args[]) throws IOException {
-        ServerSocket ss = new ServerSocket(1234);
-        HangmanServer hangmanServer = new HangmanServer(ss);
-        hangmanServer.StartServer();
+    private static class EchoClientHandler extends Thread {
+        private Socket clientSocket;
+        private PrintWriter out;
+        private BufferedReader in;
+
+        public ClientHandler(Socket socket) {
+            this.clientSocket = socket;
+        }
+
+        public void run() {
+
+            try {
+                out = new PrintWriter(clientSocket.getOutputStream(), true);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            try {
+                in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
 
 
-    }
+            String inputLine;
+            try {
+                while (true) {
+                    if (!((inputLine = in.readLine()) != null)) break;
 
+                    if (".".equals(inputLine)) {
+                    out.println("bye");
+                    break;
+                }
+                out.println(inputLine);}
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
 
+            try {
+                in.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            out.close();
+            try {
+                clientSocket.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    } */
 }
-

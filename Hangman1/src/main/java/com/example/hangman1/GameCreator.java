@@ -20,9 +20,9 @@ public class GameCreator {
         Scene scene = new Scene(scrollPane, 550, 200, Color.BEIGE);
 
 
+
+
         return scene;
     }
-
-
 
 }

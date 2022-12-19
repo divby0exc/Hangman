@@ -15,6 +15,7 @@ import java.util.List;
 public class Game {
     HangmanDrawing hangmanDrawing = new HangmanDrawing();
     VirtualKeyboard vk = new VirtualKeyboard();
+    SpellChecker sp= new SpellChecker();
     Logic logic = new Logic();
     String playerName;
     Label playerNameLabel;
@@ -51,7 +52,16 @@ public class Game {
         enterPlayersName.setPadding(new Insets(0, 10, 10, 10));
         playerNameField.setFont(new Font("Arial", 15));
 
-        //Get the secret word and change
+
+        // Get language of the secret word
+        Label lblLanguage = new Label("Select Language");
+        String languages[] = {"Swedish", "English"};
+        ComboBox comboBox = new ComboBox(FXCollections.observableArrayList(languages));
+        comboBox.setValue("Swedish");
+        HBox spellcheckingOfWord = new HBox(lblLanguage, comboBox);
+        spellcheckingOfWord.setPadding(new Insets(240, 10, 10, 10));
+
+        //Get the secret word
         Label SecretWordLabel = new Label("Enter secret Word for the player:");
         PasswordField secretWordField = new PasswordField();
         secretWordField.setOnMouseClicked(mouseEvent -> {
@@ -64,12 +74,11 @@ public class Game {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Please enter the secret word first!");
                 alert.show();
-            } else {
-                  /* if (SpellChecker.SpellCheck(passwordField.getText(),(String) comboBox.getValue())) {
-                     } else if (!Spellchecker.SpellCheck(passwordField.getText(), (String) comboBox.getValue())) {
+            }if (!sp.SpellCheck(secretWordField.getText(), (String) comboBox.getValue())) {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setContentText("Word invalid. Please check your spelling");*/
-
+                    alert.setContentText("Word invalid. Please check your spelling");
+                    alert.show();
+        }else {
                 String secretWord = secretWordField.getText().toUpperCase();
                 logic = new Logic();
                 logic.setSecretWord(secretWord);
@@ -80,13 +89,6 @@ public class Game {
         });
         HBox secretWordHbox = new HBox(SecretWordLabel, secretWordField, submitSecretWord);
 
-        // Check spelling of the secret word
-        Label lblLanguage = new Label("Select Language");
-        String languages[] = {"Swedish", "English"};
-        ComboBox comboBox = new ComboBox(FXCollections.observableArrayList(languages));
-        comboBox.setValue("Swedish");
-        HBox spellcheckingOfWord = new HBox(lblLanguage, comboBox);
-        spellcheckingOfWord.setPadding(new Insets(240, 10, 10, 10));
 
         //Show secret word in the form of dash
         showSecretWordIndashFormat = new Label();

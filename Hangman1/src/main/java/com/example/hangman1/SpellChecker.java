@@ -7,7 +7,7 @@ import java.net.URL;
 import java.util.Scanner;
 
 public class SpellChecker {
-    public static boolean SpellCheck(String word, String language) {
+    public  boolean SpellCheck(String word, String language) {
 
         URL urlSE = SpellChecker.class.getClassLoader().getResource("swedish-dictionary.txt");
         URL urlEN = SpellChecker.class.getClassLoader().getResource("english-dictionary.txt");

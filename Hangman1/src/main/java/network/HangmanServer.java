@@ -8,7 +8,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class HangmanServer extends Thread {
-  /*  private ServerSocket serverSocket;
+    private ServerSocket serverSocket;
 
     public void start(int port) throws IOException {
         serverSocket = new ServerSocket(port);
@@ -73,5 +73,5 @@ public class HangmanServer extends Thread {
                 throw new RuntimeException(e);
             }
         }
-    } */
+    } 
 }
